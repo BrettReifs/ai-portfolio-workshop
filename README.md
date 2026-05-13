@@ -2,7 +2,14 @@
 
 > Define, design, develop, and deploy your personal portfolio site in **one hour** using generative AI.
 
-**Live slides**: https://brettreifs.github.io/ai-portfolio-workshop/
+## Start here
+
+| If you're… | Open this |
+|------------|-----------|
+| **An attendee** following along live | [Live slides ↗](https://brettreifs.github.io/ai-portfolio-workshop/) |
+| **Building your portfolio now** | [`portfolio-prompt.md`](./portfolio-prompt.md) — paste into Lovable, Copilot, Claude, ChatGPT, or Gemini |
+| **Looking for inspiration** | [`examples/`](./examples/) — two reference portfolios (beginner + advanced) |
+| **An AI agent** working in this repo | [`AGENTS.md`](./AGENTS.md) + [`.github/skills/`](./.github/skills/) |
 
 ## What you'll leave with
 - A deployed personal portfolio (GitHub Pages or Vercel)
@@ -46,6 +53,15 @@ npm run build    # Build static site to dist/
 ```
 
 See [`.github/skills/README.md`](./.github/skills/README.md) for the skill index.
+
+## How to use the skills
+
+The `.github/skills/` folder contains five [Agent Skills](https://agentskills.io). Each is a directory with a `SKILL.md` plus optional bundled resources. They work in two ways:
+
+- **Inside this repo** — GitHub Copilot, Claude Code, and any compliant agent will discover them automatically via the `SKILL.md` frontmatter when you work here.
+- **Portable** — copy any skill folder into your own repo's `.github/skills/`, or upload to Claude as a Skill. Bundled resources travel with the folder.
+
+Pattern for adding your own: create `.github/skills/<your-skill>/SKILL.md` with `name` and `description` frontmatter, keep the body ≤80 lines, and move depth into `./reference.md` alongside.
 
 ## Audience
 Designed for a 60% beginner / 40% advanced split. Beginners get copy/paste guardrails; advanced attendees get extensibility patterns and platform-specific tips.
