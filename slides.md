@@ -204,6 +204,17 @@ You can hand off mid-flight. Generate in Lovable, refine copy in Canvas, polish 
 
 ---
 
+# Reference portfolios
+
+Two ship-quality examples live in [`/examples`](https://github.com/BrettReifs/ai-portfolio-workshop/tree/main/examples):
+
+- **`beginner-example/`** — single-file HTML, light dark-mode, focus-visible pass (~12 min to ship)
+- **`advanced-example/`** — dark-only aesthetic, monospace branding, writing section, metric-driven copy (~10 min, refined across 3 platforms)
+
+Skim them before generating. Use as style anchors: *"Match the type rhythm from advanced-example."*
+
+---
+
 # Develop: live demo (Lovable path)
 
 1. Paste master prompt into Lovable

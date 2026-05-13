@@ -4,6 +4,8 @@ Single copy/paste prompt. Fill the placeholders, paste into your AI tool of choi
 
 ---
 
+**Need a style anchor first?** Skim [`examples/beginner-example/`](./examples/beginner-example/) and [`examples/advanced-example/`](./examples/advanced-example/) — they were generated from this same prompt and refined to ship-quality.
+
 ## The Prompt
 
 ```

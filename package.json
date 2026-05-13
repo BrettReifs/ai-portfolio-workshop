@@ -3,6 +3,24 @@
   "private": true,
   "version": "0.1.0",
   "description": "1-hour workshop: define, design, develop, deploy a personal portfolio with generative AI.",
+  "license": "MIT",
+  "author": "Brett Reif",
+  "homepage": "https://brettreifs.github.io/ai-portfolio-workshop/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrettReifs/ai-portfolio-workshop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BrettReifs/ai-portfolio-workshop/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "workshop",
+    "slidev",
+    "generative-ai",
+    "copilot",
+    "agent-skills"
+  ],
   "scripts": {
     "dev": "slidev",
     "build": "slidev build --base /ai-portfolio-workshop/",

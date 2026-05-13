@@ -50,14 +50,15 @@ No linter is configured — keep markdown tidy by hand.
 
 ## Deploy
 - GitHub Pages via `.github/workflows/deploy-pages.yml` (primary)
-- Vercel via `vercel.json` (fallback)
+- Vercel via `vercel.json` (mirror, auto-deploys via GitHub integration)
 
 ## Skills index
 <!-- pipe-compressed: name | triggers | path -->
-content-voice | rewrite copy, kill slop, voice keywords, strip banned phrases, remove emoji | .github/skills/content-voice.md
-deploy-helper | deploy portfolio, ship to GitHub Pages, Vercel, Netlify, pre-flight checks | .github/skills/deploy-helper.md
-portfolio-architect | design structure, choose sections, outline site, group projects, define CTA | .github/skills/portfolio-architect.md
-visual-design | design tokens, color palette, type system, spacing scale, WCAG contrast, dark mode | .github/skills/visual-design.md
+portfolio-architect | design structure, choose sections, outline site, group projects, define CTA | .github/skills/portfolio-architect/SKILL.md
+content-voice       | rewrite copy, kill slop, voice keywords, strip banned phrases, remove emoji | .github/skills/content-voice/SKILL.md
+visual-design       | design tokens, color palette, type system, spacing scale, WCAG contrast, dark mode | .github/skills/visual-design/SKILL.md
+frontend-design     | semantic HTML scaffolds, CSS architecture, focus and motion patterns, performance budget | .github/skills/frontend-design/SKILL.md
+deploy-helper       | deploy portfolio, ship to GitHub Pages, Vercel, Netlify, pre-flight checks | .github/skills/deploy-helper/SKILL.md
 
 ## Safe defaults
 - Never commit `.env`, API keys, or local dev secrets.
