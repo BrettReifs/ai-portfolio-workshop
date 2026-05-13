@@ -1,3 +1,8 @@
+---
+name: portfolio-architect
+description: 'Turn raw user info into a structured portfolio site outline with sections, CTAs, and success metrics. Use when: designing portfolio structure, choosing sections, outlining a site, deciding single-page vs multi-page, grouping projects into cards, defining primary CTA.'
+---
+
 # Skill: portfolio-architect
 
 Turns raw user info into a structured site outline.

@@ -44,6 +44,13 @@ No linter is configured — keep markdown tidy by hand.
 - GitHub Pages via `.github/workflows/deploy-pages.yml` (primary)
 - Vercel via `vercel.json` (fallback)
 
+## Skills index
+<!-- pipe-compressed: name | triggers | path -->
+content-voice | rewrite copy, kill slop, voice keywords, strip banned phrases, remove emoji | .github/skills/content-voice.md
+deploy-helper | deploy portfolio, ship to GitHub Pages, Vercel, Netlify, pre-flight checks | .github/skills/deploy-helper.md
+portfolio-architect | design structure, choose sections, outline site, group projects, define CTA | .github/skills/portfolio-architect.md
+visual-design | design tokens, color palette, type system, spacing scale, WCAG contrast, dark mode | .github/skills/visual-design.md
+
 ## Safe defaults
 - Never commit `.env`, API keys, or local dev secrets.
 - If you scaffold new tooling, prefer zero-config or single-file solutions over heavy frameworks.

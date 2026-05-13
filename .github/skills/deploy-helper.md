@@ -1,3 +1,8 @@
+---
+name: deploy-helper
+description: 'Deploy a portfolio site to GitHub Pages, Vercel, Netlify, or Cloudflare Pages with pre-flight checks. Use when: shipping a portfolio, deploying to production, setting up GitHub Actions for Pages, running Lighthouse audit, configuring custom domains, running pre-flight checklist.'
+---
+
 # Skill: deploy-helper
 
 Walks the user through deploying a portfolio to GitHub Pages or Vercel.

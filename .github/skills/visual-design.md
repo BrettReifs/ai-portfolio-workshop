@@ -1,3 +1,8 @@
+---
+name: visual-design
+description: 'Generate design tokens, color palettes, type systems, and layout patterns for a portfolio. Use when: creating a visual language, picking colors and fonts, defining spacing scales, checking WCAG contrast, setting up dark mode, choosing aesthetic direction.'
+---
+
 # Skill: visual-design
 
 Emits design tokens and layout decisions for a portfolio.

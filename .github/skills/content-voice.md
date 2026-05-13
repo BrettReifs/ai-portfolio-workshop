@@ -1,3 +1,8 @@
+---
+name: content-voice
+description: 'Rewrite portfolio copy in a consistent voice and strip AI slop. Use when: rewriting hero text, about sections, project descriptions, killing banned phrases, removing emoji, making content sound human, applying voice keywords, fixing generic AI output.'
+---
+
 # Skill: content-voice
 
 Applies a defined voice to portfolio copy and removes AI slop.
