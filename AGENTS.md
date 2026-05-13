@@ -17,7 +17,7 @@ A 1-hour workshop teaching attendees to ship a personal portfolio with generativ
 ### Voice + content rules
 - No emoji in finished content.
 - No em dashes — use commas, periods, or parentheses.
-- Banned phrases: *delve, showcase, robust, seamless, cutting-edge, innovative, game-changer, dive into, deep dive, it's worth noting, in today's fast-paced world*.
+- Banned phrases: see [`.github/skills/content-voice/banned-phrases.md`](./.github/skills/content-voice/banned-phrases.md) for the full dictionary. Strip on sight; do not replace.
 - No sycophantic openers.
 - Lists are tools, not finished prose.
 

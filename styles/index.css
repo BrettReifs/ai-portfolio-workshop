@@ -1,0 +1,104 @@
+/*
+  styles/index.css
+  Global design token CSS custom properties for the pro slide deck.
+  Scoped to .slidev-layout so they do not leak into the presenter UI.
+
+  Token values from design.md / visual-design/reference.md.
+*/
+
+.slidev-layout {
+  /* Color — dark mode (seriph theme defaults dark) */
+  --pro-bg:      #0A0A0A;
+  --pro-surface: #171717;
+  --pro-text:    #FAFAF9;
+  --pro-muted:   #A3A3A3;
+  --pro-accent:  #60A5FA;
+  --pro-border:  #262626;
+
+  /* Color — light mode variants (used in ColorPalette component) */
+  --pro-light-bg:      #FAFAF9;
+  --pro-light-surface: #FFFFFF;
+  --pro-light-text:    #0A0A0A;
+  --pro-light-muted:   #525252;
+  --pro-light-accent:  #2563EB;
+  --pro-light-border:  #E5E5E5;
+
+  /* Typography */
+  --pro-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pro-font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+
+  /* Type scale (rem, ratio ~1.25) */
+  --pro-text-xs:  0.875rem;
+  --pro-text-sm:  1rem;
+  --pro-text-md:  1.125rem;
+  --pro-text-lg:  1.25rem;
+  --pro-text-xl:  1.5rem;
+  --pro-text-2xl: 2rem;
+  --pro-text-3xl: 3rem;
+
+  /* Spacing scale (rem) */
+  --pro-space-1:  0.25rem;
+  --pro-space-2:  0.5rem;
+  --pro-space-3:  0.75rem;
+  --pro-space-4:  1rem;
+  --pro-space-6:  1.5rem;
+  --pro-space-8:  2rem;
+  --pro-space-12: 3rem;
+  --pro-space-16: 4rem;
+  --pro-space-24: 6rem;
+  --pro-space-32: 8rem;
+
+  /* Radius */
+  --pro-radius-sm: 4px;
+  --pro-radius-md: 8px;
+  --pro-radius-pill: 9999px;
+
+  /* Shadows */
+  --pro-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --pro-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/*
+  Dark-slide override — applied to component-demo slides (10, 11, 12) via
+  frontmatter `class: dark-slide`. Forces a dark canvas so all components
+  that use dark-mode token colors render with correct contrast.
+  Two-class selector beats seriph's single-class `.slidev-layout` rule.
+*/
+.slidev-layout.dark-slide {
+  background: #0e0e0e !important;
+  color: #FAFAF9 !important;
+}
+
+/*
+  Goto-slide dialog — hidden by default, responsive when open.
+
+  Slidev toggles two UnoCSS classes on #slidev-goto-dialog:
+    closed: .-top-20 → top: -5rem (-80px)  — above the viewport, invisible
+    open:   .top-5   → top: 1.25rem (20px)  — visible at top-right
+
+  The previous rule (top: 137px !important) applied unconditionally, which
+  kept the dialog partially visible even when closed and pushed it out of
+  position on presentation slides. The fix:
+    - Hide the closed state completely. The list is taller than 80px, so
+      Slidev's default .-top-20 offset still leaves it visible.
+    - Override only the open state so the input and autocomplete list both
+      stay within the viewport at any screen height.
+    - Constrain width so the dialog never overflows narrow screens.
+*/
+#slidev-goto-dialog[class~="-top-20"] {
+  display: none !important;
+}
+
+#slidev-goto-dialog.top-5 {
+  top: clamp(1.25rem, 3vh, 3.5rem) !important;
+}
+
+#slidev-goto-dialog {
+  max-width: min(22.5rem, calc(100vw - 2.5rem)) !important;
+  width: min(22.5rem, calc(100vw - 2.5rem)) !important;
+  min-width: min(14rem, calc(100vw - 2.5rem)) !important;
+}
+
+#slidev-goto-dialog .autocomplete-list {
+  max-height: min(calc(100vh - 120px), 55vh);
+}

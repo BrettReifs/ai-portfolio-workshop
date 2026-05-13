@@ -40,7 +40,7 @@ npm run build    # Build static site to dist/
 ## Repo layout
 ```
 .
-├── slides.md                       # Slidev presentation (the public landing page)
+├── slides.md                       # Slidev presentation (the deployed deck)
 ├── portfolio-prompt.md             # Master copy/paste prompt
 ├── design.md                       # Workshop chapter on design principles
 ├── AGENTS.md                       # Repo conventions for AI agents
