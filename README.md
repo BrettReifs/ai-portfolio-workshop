@@ -7,7 +7,7 @@
 ## What you'll leave with
 - A deployed personal portfolio (GitHub Pages or Vercel)
 - A reusable master prompt that works across 5 AI platforms
-- 4 reusable AI skills you can drop into Copilot or Claude
+- 5 reusable [Agent Skills](https://agentskills.io) you can drop into Copilot, Claude, or any compliant agent
 - Two reference portfolios (beginner + advanced) to fork
 
 ## Featured platforms
@@ -33,13 +33,19 @@ npm run build    # Build static site to dist/
 ## Repo layout
 ```
 .
-├── slides.md              # Slidev presentation (the public landing page)
-├── portfolio-prompt.md    # Master copy/paste prompt
-├── design.md              # Design tokens, layouts, anti-slop rules
-├── AGENTS.md              # Repo conventions for AI agents
-├── skills/                # Reusable Copilot/Claude skill files
-└── examples/              # Reference portfolios
+├── slides.md                       # Slidev presentation (the public landing page)
+├── portfolio-prompt.md             # Master copy/paste prompt
+├── design.md                       # Workshop chapter on design principles
+├── AGENTS.md                       # Repo conventions for AI agents
+├── .github/
+│   ├── copilot-instructions.md     # Repo-level Copilot guidance
+│   └── skills/                     # 5 Agent Skills (portfolio-architect,
+│                                   #   content-voice, visual-design,
+│                                   #   frontend-design, deploy-helper)
+└── examples/                       # Reference portfolios (beginner + advanced)
 ```
+
+See [`.github/skills/README.md`](./.github/skills/README.md) for the skill index.
 
 ## Audience
 Designed for a 60% beginner / 40% advanced split. Beginners get copy/paste guardrails; advanced attendees get extensibility patterns and platform-specific tips.
