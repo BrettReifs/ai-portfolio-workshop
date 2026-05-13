@@ -1,0 +1,17 @@
+{
+  "name": "ai-portfolio-workshop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "1-hour workshop: define, design, develop, deploy a personal portfolio with generative AI.",
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /ai-portfolio-workshop/",
+    "build:vercel": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "^0.25.0",
+    "@slidev/theme-seriph": "^0.25.0"
+  }
+}

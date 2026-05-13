@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sasha Vora — AI Systems Engineer</title>
+<meta name="description" content="AI systems engineer building agent infrastructure for production.">
+<meta property="og:title" content="Sasha Vora — AI Systems Engineer">
+<meta property="og:description" content="AI systems engineer building agent infrastructure for production.">
+<style>
+  :root{
+    --bg:#0A0A0A;--surface:#111;--text:#F5F5F4;--muted:#A3A3A3;
+    --accent:#10B981;--border:#262626;
+    --f:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    --m:ui-monospace,"Cascadia Code","JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--f);background:var(--bg);color:var(--text);line-height:1.55}
+  .wrap{max-width:880px;margin:0 auto;padding:5rem 1.5rem}
+  header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4rem}
+  .mark{font-family:var(--m);color:var(--accent)}
+  nav a{color:var(--muted);margin-left:1.25rem;text-decoration:none;font-size:.875rem}
+  nav a:hover,nav a:focus-visible{color:var(--text)}
+  h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 1rem;line-height:1.1;letter-spacing:-.02em}
+  .lede{color:var(--muted);font-size:1.125rem;max-width:36rem}
+  .cta-row{margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap}
+  .cta{padding:.625rem 1.125rem;border-radius:6px;text-decoration:none;font-size:.95rem}
+  .cta.primary{background:var(--accent);color:#0A0A0A;font-weight:600}
+  .cta.ghost{border:1px solid var(--border);color:var(--text)}
+  .cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  section{margin-top:5rem}
+  .label{font-family:var(--m);font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:block}
+  h2{font-size:1.5rem;margin:0 0 2rem;letter-spacing:-.01em}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+  .card{padding:1.5rem;border:1px solid var(--border);border-radius:8px;background:var(--surface);transition:border-color .15s}
+  .card:hover{border-color:var(--accent)}
+  .card h3{margin:0 0 .5rem;font-size:1.125rem}
+  .card p{margin:0 0 .75rem;color:var(--muted);font-size:.95rem}
+  .tags{display:flex;gap:.375rem;flex-wrap:wrap}
+  .tag{font-family:var(--m);font-size:.7rem;padding:.125rem .5rem;border:1px solid var(--border);border-radius:4px;color:var(--muted)}
+  .post{padding:1rem 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:1rem}
+  .post:first-child{border-top:0}
+  .post a{color:var(--text);text-decoration:none}
+  .post a:hover{color:var(--accent)}
+  .post time{color:var(--muted);font-family:var(--m);font-size:.8rem;flex-shrink:0}
+  footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.875rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a{color:var(--text);text-decoration:none;margin-left:1rem}
+  footer a:first-child{margin-left:0}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="mark">$ sasha.vora</span>
+    <nav><a href="#work">work</a><a href="#writing">writing</a><a href="#contact">contact</a></nav>
+  </header>
+
+  <h1>I build agent infrastructure that runs in production.</h1>
+  <p class="lede">AI systems engineer. I focus on the unglamorous parts of agents — observability, eval loops, retry semantics, cost control — so the interesting parts can ship.</p>
+  <div class="cta-row">
+    <a class="cta primary" href="mailto:sasha@example.com">Work together</a>
+    <a class="cta ghost" href="#work">See what I've shipped</a>
+  </div>
+
+  <section id="work">
+    <span class="label">// selected work</span>
+    <h2>Things I've shipped</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Mesh</h3>
+        <p>Distributed agent orchestrator handling 40k tasks/day with sub-second routing.</p>
+        <div class="tags"><span class="tag">Go</span><span class="tag">Temporal</span><span class="tag">OpenTelemetry</span></div>
+      </article>
+      <article class="card">
+        <h3>Beacon</h3>
+        <p>Eval pipeline that caught 3 production regressions in the first week of deploy.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Braintrust</span></div>
+      </article>
+      <article class="card">
+        <h3>Loft</h3>
+        <p>Open-source MCP server template with built-in tracing and rate limiting.</p>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">MCP</span></div>
+      </article>
+      <article class="card">
+        <h3>Tessera</h3>
+        <p>Cost attribution dashboard for multi-LLM workloads. Cut spend 31% in 6 weeks.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">DuckDB</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="writing">
+    <span class="label">// writing</span>
+    <h2>Recent posts</h2>
+    <div>
+      <div class="post"><a href="#">Why your agent eval loop is probably wrong</a><time>2026-04</time></div>
+      <div class="post"><a href="#">Cost attribution patterns for multi-LLM systems</a><time>2026-03</time></div>
+      <div class="post"><a href="#">Retry semantics: what nobody tells you about tool-calling agents</a><time>2026-02</time></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <span class="label">// contact</span>
+    <h2>Let's talk</h2>
+    <p class="lede">Hiring for an agent infra role, building one yourself, or want to compare notes? I read every email.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="mailto:sasha@example.com">sasha@example.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Sasha Vora</span>
+    <span>
+      <a href="https://github.com/example">GitHub</a>
+      <a href="https://linkedin.com/in/example">LinkedIn</a>
+      <a href="/rss.xml">RSS</a>
+    </span>
+  </footer>
+</div>
+</body>
+</html>
