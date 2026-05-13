@@ -314,16 +314,17 @@ Star the repo. Fork it. Extend it. Send me what you ship.
 
 ---
 
-# Take-home: the 4 skills
+# Take-home: 5 Agent Skills
 
-In `/skills`:
+In `.github/skills/`, each is a self-contained folder with `SKILL.md`:
 
 - **portfolio-architect** — turns raw info into site structure
 - **content-voice** — applies your voice, kills slop
-- **visual-design** — emits design tokens + layout decisions
-- **deploy-helper** — walks through GH Pages or Vercel deploy
+- **visual-design** — design tokens, palette, type system
+- **frontend-design** — semantic HTML/CSS, focus states, performance
+- **deploy-helper** — GH Pages / Vercel / Netlify with pre-flight checks
 
-Each is a markdown file. Drop into Claude Projects or reference from Copilot CLI.
+Follows the [Agent Skills standard](https://agentskills.io). Drop any folder into your own `.github/skills/` or upload to Claude.
 
 ---
 

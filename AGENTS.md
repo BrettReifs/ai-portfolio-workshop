@@ -9,7 +9,8 @@ A 1-hour workshop teaching attendees to ship a personal portfolio with generativ
 
 ### Files
 - **Root markdown is the public surface.** Keep `slides.md`, `portfolio-prompt.md`, `design.md`, and `README.md` clean, copy/paste ready, and free of slop.
-- **`/skills`** — each file is a self-contained skill with trigger phrases, inputs, process, and acceptance criteria.
+- **`.github/skills/`** — five [Agent Skills](https://agentskills.io). Each skill is a directory containing `SKILL.md` plus optional bundled `reference.md` / supporting files. Bundled resources live INSIDE the skill folder.
+- **`.github/copilot-instructions.md`** — short discovery file pointing here and to skills.
 - **`/examples`** — self-contained sample portfolios. Don't import across examples.
 - Slidev base path is `/ai-portfolio-workshop/` for GitHub Pages.
 
@@ -37,8 +38,15 @@ No linter is configured — keep markdown tidy by hand.
 ## When working on…
 - **slides.md** — preserve frontmatter, keep slides scannable (1 idea per slide), respect the 1hr time budget.
 - **portfolio-prompt.md** — placeholders use `{CURLY_CASE}`. Test edits against all 5 platforms before merging.
-- **skills/** — match the structure of existing skills. Keep them under ~80 lines each.
+- **`.github/skills/<name>/SKILL.md`** — keep body ≤80 lines, move deeper content to bundled `reference.md`. Description must be retrieval-optimized (verb-led, lists trigger conditions). Reference resources via `./reference.md` (relative) — never reach outside the skill folder.
 - **examples/** — keep dependencies minimal; examples should run with `npx serve` or `python -m http.server`.
+
+## Skill conventions
+- One skill = one directory containing `SKILL.md`
+- Frontmatter: `name` (kebab-case, matches folder) + `description` (retrieval-optimized)
+- Body sections (consistent): When to use → Inputs → Process → Outputs → Bundled resources → Acceptance criteria
+- Progressive disclosure: SKILL.md is the entry point; deeper context goes to `./reference.md` or similar bundled files
+- See `.github/skills/README.md` for the index and full conventions
 
 ## Deploy
 - GitHub Pages via `.github/workflows/deploy-pages.yml` (primary)
