@@ -1,6 +1,6 @@
 # Beginner Example
 
-A single-file HTML portfolio generated from `portfolio-prompt.md` with minimal edits.
+A single-file HTML portfolio generated from `DEFINE.prompt.md` with minimal edits.
 
 ## What's here
 - `index.html` — the entire site

@@ -4,7 +4,7 @@ Two reference portfolios you can fork, inspect, or paste into your AI tool of ch
 
 | Example | What it shows | Generation time |
 |---------|---------------|-----------------|
-| [`beginner-example/`](./beginner-example/) | Single-file HTML portfolio straight from `portfolio-prompt.md` with light dark-mode and a focus-visible pass | ~12 min |
+| [`beginner-example/`](./beginner-example/) | Single-file HTML portfolio straight from `DEFINE.prompt.md` with light dark-mode and a focus-visible pass | ~12 min |
 | [`advanced-example/`](./advanced-example/) | Opinionated dark-only aesthetic, monospace branding, writing section, metric-driven project copy, refined across 3 platforms | ~10 min |
 
 ## Run locally

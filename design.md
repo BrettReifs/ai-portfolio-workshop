@@ -1,8 +1,8 @@
-# design.md — Workshop chapter
+# DESIGN.md — Workshop chapter
 
 The design language for portfolios produced in this workshop. This file is the **workshop curriculum** — read it as part of the lesson. The full token reference and implementation patterns live inside the skills:
 
-- **Token system** (palette, type, spacing) → [`.github/skills/visual-design/reference.md`](./.github/skills/visual-design/reference.md)
+- **Token system** (palette, type, spacing) → [`.github/skills/define-design/reference.md`](./.github/skills/define-design/reference.md)
 - **HTML/CSS implementation** (scaffolds, focus states, performance) → [`.github/skills/frontend-design/reference.md`](./.github/skills/frontend-design/reference.md)
 - **Anti-slop content rules** (banned phrases) → [`.github/skills/content-voice/banned-phrases.md`](./.github/skills/content-voice/banned-phrases.md)
 
@@ -26,6 +26,8 @@ The design language for portfolios produced in this workshop. This file is the *
 **Hero.** Name, role, one-line value prop, two CTAs (primary: contact, secondary: work). No background video.
 
 **Projects grid.** 2-3 columns desktop, 1 column mobile. Each card: thumbnail or color block, title, one-line outcome, tags. Click goes to a case study or external link.
+
+**Showcase (cinematic).** Full-viewport hero (90vh+) with gradient backdrop highlighting one flagship project, then horizontally scrollable category rows below. Each row groups projects by capability with a heading and one-line description. Row order tells a narrative: core expertise first, supporting infrastructure second, applied outcomes third. Cards include CSS-only visual motifs (terminal panels, node graphs, data bars) unique to each project, plus a maturity badge (Prod, Active, Research, Proto). Scroll buttons and keyboard arrow nav required for accessibility. This pattern works best when you have 8+ projects to organize into 3-4 meaningful categories. See `examples/netflix-example/` for the reference implementation.
 
 **About.** Two paragraphs maximum. First: what you do. Second: how you got here or what you care about.
 

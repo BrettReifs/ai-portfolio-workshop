@@ -1,6 +1,6 @@
 # Advanced Example
 
-Single-file portfolio with custom sections (writing, dark-only design, monospace branding) generated from `portfolio-prompt.md` and refined across 3 platforms.
+Single-file portfolio with custom sections (writing, dark-only design, monospace branding) generated from `DEFINE.prompt.md` and refined across 3 platforms.
 
 ## What's here
 - `index.html` — the entire site

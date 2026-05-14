@@ -9,7 +9,7 @@ Single copy/paste prompt. Fill the placeholders, paste into your AI tool of choi
 ## The Prompt
 
 ```
-You are an expert project portfolio designer and full-stack developer. Build me a personal portfolio site.
+You are an expert project portfolio designer and full-stack developer. Build me a personal portfolio site. Ask me questions to help me fill out as much information as possible fast.
 
 # Identity
 - Name: {NAME}

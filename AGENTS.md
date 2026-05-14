@@ -8,7 +8,7 @@ A 1-hour workshop teaching attendees to ship a personal portfolio with generativ
 ## Conventions
 
 ### Files
-- **Root markdown is the public surface.** Keep `slides.md`, `portfolio-prompt.md`, `design.md`, and `README.md` clean, copy/paste ready, and free of slop.
+- **Root markdown is the public surface.** Keep `slides.md`, `DEFINE.prompt.md`, `DESIGN.md`, and `README.md` clean, copy/paste ready, and free of slop.
 - **`.github/skills/`** — five [Agent Skills](https://agentskills.io). Each skill is a directory containing `SKILL.md` plus optional bundled `reference.md` / supporting files. Bundled resources live INSIDE the skill folder.
 - **`.github/copilot-instructions.md`** — short discovery file pointing here and to skills.
 - **`/examples`** — self-contained sample portfolios. Don't import across examples.
@@ -31,15 +31,16 @@ A 1-hour workshop teaching attendees to ship a personal portfolio with generativ
 npm run dev      # Slidev dev server
 npm run build    # Static build to dist/
 npm run export   # Export slides to PDF (optional)
+npx @google/design.md lint DESIGN.md  # Validate design token file
 ```
 
 No linter is configured — keep markdown tidy by hand.
 
 ## When working on…
 - **slides.md** — preserve frontmatter, keep slides scannable (1 idea per slide), respect the 1hr time budget.
-- **portfolio-prompt.md** — placeholders use `{CURLY_CASE}`. Test edits against all 5 platforms before merging.
+- **DEFINE.prompt.md** — placeholders use `{CURLY_CASE}`. Test edits against all 5 platforms before merging.
 - **`.github/skills/<name>/SKILL.md`** — keep body ≤80 lines, move deeper content to bundled `reference.md`. Description must be retrieval-optimized (verb-led, lists trigger conditions). Reference resources via `./reference.md` (relative) — never reach outside the skill folder.
-- **examples/** — keep dependencies minimal; examples should run with `npx serve` or `python -m http.server`.
+- **examples/** — keep dependencies minimal; examples should run with `npx serve` or `python -m http.server`. Each example contains a `DESIGN.md` alongside its `index.html` — the skill `define-design` references these across folder boundaries; this is an intentional exception to the bundled-resources rule because examples serve double duty as workshop deliverables.
 
 ## Skill conventions
 - One skill = one directory containing `SKILL.md`
@@ -54,11 +55,49 @@ No linter is configured — keep markdown tidy by hand.
 
 ## Skills index
 <!-- pipe-compressed: name | triggers | path -->
+
+### Portfolio skills
 portfolio-architect | design structure, choose sections, outline site, group projects, define CTA | .github/skills/portfolio-architect/SKILL.md
 content-voice       | rewrite copy, kill slop, voice keywords, strip banned phrases, remove emoji | .github/skills/content-voice/SKILL.md
-visual-design       | design tokens, color palette, type system, spacing scale, WCAG contrast, dark mode | .github/skills/visual-design/SKILL.md
+define-design      | design tokens, color palette, type system, DESIGN.md, extract from reference, WCAG contrast, dark mode | .github/skills/define-design/SKILL.md
 frontend-design     | semantic HTML scaffolds, CSS architecture, focus and motion patterns, performance budget | .github/skills/frontend-design/SKILL.md
 deploy-helper       | deploy portfolio, ship to GitHub Pages, Vercel, Netlify, pre-flight checks | .github/skills/deploy-helper/SKILL.md
+
+### Engineering skills
+code-reviewer           | review code, find bugs, security issues, best practices | .github/skills/code-reviewer/SKILL.md
+test-writer             | generate tests, unit tests, integration tests, edge cases | .github/skills/test-writer/SKILL.md
+tdd                     | red-green-refactor, test-first, vertical slices, behavioral tests | .github/skills/tdd/SKILL.md
+diagnose                | debug, reproduce bug, hard bugs, performance regression, instrument | .github/skills/diagnose/SKILL.md
+commit-hygiene          | conventional commits, Co-authored-by, branch naming, no secrets in diff | .github/skills/commit-hygiene/SKILL.md
+improve-codebase-architecture | refactor, deepen modules, find friction, testability, AI-navigable | .github/skills/improve-codebase-architecture/SKILL.md
+prototype               | throwaway prototype, sanity-check, mock up UI, explore design options | .github/skills/prototype/SKILL.md
+researcher              | explore codebase, understand architecture, find patterns, answer questions | .github/skills/researcher/SKILL.md
+
+### Design and content skills
+artisan-ux              | three-pass design, additive reformative reductive, Kano-aware, UI/UX refinement | .github/skills/artisan-ux/SKILL.md
+visual-asset-generator  | AI image prompts, scene layering, narrative framework, design tokens | .github/skills/visual-asset-generator/SKILL.md
+find-library-template   | find templates, UI inspiration, component library, design.md, rapid prototyping | .github/skills/find-library-template/SKILL.md
+multi-objective-review  | quality scorecard, usability, performance, engagement, accessibility, adaptability | .github/skills/multi-objective-review/SKILL.md
+
+### Planning and workflow skills
+grill-me                | stress-test plan, interview, decision tree, shared understanding | .github/skills/grill-me/SKILL.md
+grill-with-docs         | stress-test plan against docs, domain language, terminology, ADRs | .github/skills/grill-with-docs/SKILL.md
+to-issues               | break plan into issues, implementation tickets, tracer-bullet slices | .github/skills/to-issues/SKILL.md
+to-prd                  | synthesize PRD, capture spec, tracking issue | .github/skills/to-prd/SKILL.md
+triage                  | triage issues, bug or enhancement, needs-info, ready-for-agent | .github/skills/triage/SKILL.md
+write-a-skill           | create skill, author SKILL.md, retrieval-optimized description, bundled resources | .github/skills/write-a-skill/SKILL.md
+
+### Session management skills
+context-save            | save checkpoint, pause session, git state, remaining work | .github/skills/context-save/SKILL.md
+context-restore         | resume checkpoint, pick up where left off, re-ground on git state | .github/skills/context-restore/SKILL.md
+handoff                 | wrap session, handoff document, switch tools, context flush | .github/skills/handoff/SKILL.md
+summarize-then-continue | compact session, VS Code workaround, paste-ready summary | .github/skills/summarize-then-continue/SKILL.md
+context-hygiene         | repo health, stale files, uncommitted changes, orphaned artifacts | .github/skills/context-hygiene/SKILL.md
+zoom-out                | broader context, higher-level view, map codebase, unfamiliar area | .github/skills/zoom-out/SKILL.md
+
+### Utility skills
+caveman                 | brief mode, less tokens, ultra-compressed, drop filler | .github/skills/caveman/SKILL.md
+autonomous-iteration    | autonomous experiment loop, single file, measurable metric, keep or discard | .github/skills/autonomous-iteration/SKILL.md
 
 ## Safe defaults
 - Never commit `.env`, API keys, or local dev secrets.

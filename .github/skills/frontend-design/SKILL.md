@@ -5,7 +5,7 @@ description: Translate design tokens into shippable HTML and CSS for a portfolio
 
 # frontend-design
 
-Turn a token system (from `visual-design`) into shippable HTML/CSS. This skill owns the **how** — markup structure, CSS architecture, accessibility implementation, performance.
+Turn a token system (from `define-design`) into shippable HTML/CSS. This skill owns the **how** — markup structure, CSS architecture, accessibility implementation, performance.
 
 ## When to use
 - Tokens are decided and the user needs actual HTML/CSS
@@ -14,7 +14,7 @@ Turn a token system (from `visual-design`) into shippable HTML/CSS. This skill o
 - User wants to pick a CSS architecture (custom props, Tailwind, CSS-in-JS)
 
 ## Inputs
-- Design tokens (output of `visual-design`)
+- Design tokens (output of `define-design`)
 - Section list (output of `portfolio-architect`)
 - Framework choice (plain HTML/CSS, Astro, Next.js, SvelteKit)
 - Performance target (default: ≤300KB total, <2s LCP on 4G)

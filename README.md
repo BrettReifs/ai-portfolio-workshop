@@ -7,7 +7,7 @@
 | If you're… | Open this |
 |------------|-----------|
 | **An attendee** following along live | [Live slides ↗](https://brettreifs.github.io/ai-portfolio-workshop/) |
-| **Building your portfolio now** | [`portfolio-prompt.md`](./portfolio-prompt.md) — paste into Lovable, Copilot, Claude, ChatGPT, or Gemini |
+| **Building your portfolio now** | [`DEFINE.prompt.md`](./DEFINE.prompt.md) — paste into Lovable, Copilot, Claude, ChatGPT, or Gemini |
 | **Looking for inspiration** | [`examples/`](./examples/) — two reference portfolios (beginner + advanced) |
 | **An AI agent** working in this repo | [`AGENTS.md`](./AGENTS.md) + [`.github/skills/`](./.github/skills/) |
 
@@ -32,7 +32,7 @@ npm run build    # Build static site to dist/
 ```
 
 ## Quick start (attendees)
-1. Open `portfolio-prompt.md`
+1. Open `DEFINE.prompt.md`
 2. Fill in the placeholders (`{NAME}`, `{ROLE}`, etc.)
 3. Paste into your AI tool of choice
 4. Iterate, then deploy with the steps in the slides
@@ -41,13 +41,13 @@ npm run build    # Build static site to dist/
 ```
 .
 ├── slides.md                       # Slidev presentation (the deployed deck)
-├── portfolio-prompt.md             # Master copy/paste prompt
-├── design.md                       # Workshop chapter on design principles
+├── DEFINE.prompt.md                # Master copy/paste prompt
+├── DESIGN.md                       # Workshop chapter on design principles
 ├── AGENTS.md                       # Repo conventions for AI agents
 ├── .github/
 │   ├── copilot-instructions.md     # Repo-level Copilot guidance
 │   └── skills/                     # 5 Agent Skills (portfolio-architect,
-│                                   #   content-voice, visual-design,
+│                                   #   content-voice, define-design,
 │                                   #   frontend-design, deploy-helper)
 └── examples/                       # Reference portfolios (beginner + advanced)
 ```

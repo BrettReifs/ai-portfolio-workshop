@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "1-hour workshop: define, design, develop, deploy a personal portfolio with generative AI.",
   "license": "MIT",
-  "author": "Brett Reif",
+  "author": "Brett Reifers",
   "homepage": "https://brettreifs.github.io/ai-portfolio-workshop/",
   "repository": {
     "type": "git",
@@ -25,7 +25,11 @@
     "dev": "slidev",
     "build": "slidev build --base /ai-portfolio-workshop/",
     "build:vercel": "slidev build",
-    "export": "slidev export"
+    "export": "slidev export",
+    "dev:pro": "slidev slides-pro.md",
+    "build:pro": "slidev build slides-pro.md --base /ai-portfolio-workshop/",
+    "build:vercel:pro": "slidev build slides-pro.md",
+    "export:pro": "slidev export slides-pro.md"
   },
   "dependencies": {
     "@slidev/cli": "^0.49.0",

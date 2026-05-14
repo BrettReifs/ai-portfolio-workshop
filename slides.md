@@ -1,10 +1,9 @@
 ---
 theme: seriph
-title: AI Portfolio Workshop
+title: Build with AI — Follow-Along Demo
 info: |
   Define, design, develop, and deploy a personal portfolio in 1 hour.
   Repo: https://github.com/BrettReifs/ai-portfolio-workshop
-class: text-center
 highlighter: shiki
 drawings:
   persist: false
@@ -17,458 +16,744 @@ fonts:
   italic: true
 ---
 
-# AI Portfolio Workshop
-
-Define. Design. Develop. Deploy. **In one hour.**
-
-<div class="pt-12">
-  <span class="px-3 py-1.5 rounded font-mono text-sm" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7)">
-    github.com/BrettReifs/ai-portfolio-workshop
-  </span>
+<!-- ============================================================
+     SLIDE 1 — Title / Hero  (Image 3 pattern: full-screen hero)
+     ============================================================ -->
+<div class="hero-slide">
+  <div class="hero-label">University of Washington · Foster School of Business</div>
+  <h1 class="hero-title">Build with AI:<br><em>Follow-Along Demo.</em></h1>
+  <p class="hero-sub">Define. Design. Develop. Deploy. <strong>In one hour.</strong></p>
+  <a
+    href="https://github.com/BrettReifs/ai-portfolio-workshop"
+    class="hero-badge"
+    target="_blank"
+    rel="noopener"
+  >github.com/BrettReifs/ai-portfolio-workshop</a>
 </div>
 
+<style>
+.slidev-layout {
+  background: linear-gradient(135deg, #2D1A52 0%, #4B2E83 40%, #7B5DB0 75%, #1a0a30 100%) !important;
+  color: #FFFFFF !important;
+}
+.hero-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 2rem;
+}
+.hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(212, 168, 83, 0.9);
+  font-weight: 600;
+}
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0;
+}
+.hero-title em {
+  color: #D4A853;
+  font-style: normal;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+}
+.hero-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.65);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+</style>
+
 <!--
-Welcome. Before we start, open the repo link and star it.
-You will leave with a live portfolio URL.
+Welcome everyone. Before we start, find this repo and star it.
+You will leave today with a live portfolio URL.
 -->
 
 ---
 
-# Who this is for
-
-<v-clicks>
-
-- **You are new to AI tools** and want a portfolio shipped today
-- **You already use AI** and want sharper prompts, better skills, and deeper tricks
-- You have 1 hour and a laptop
-
-</v-clicks>
-
-<p v-after class="mt-8 text-gray-600 text-base">We will build something real. You will leave with a deployed site.</p>
-
----
-
-# Today's path
-
-| Time | Phase | Outcome |
-|------|-------|---------|
-| 5 min | Welcome | Set the stage |
-| 10 min | **Define** | Identity, audience, voice |
-| 15 min | **Design** | Tokens, layout, references |
-| 15 min | **Develop** | Generate site, refine, ship copy |
-| 10 min | **Deploy** | Live URL, custom domain optional |
-| 5 min | Wrap | Take-home toolkit + Q&A |
-
----
-hideInToc: true
----
-
-# The 5 platforms we will touch
-
-<v-clicks>
-
-- **Lovable:** full-stack, generate-and-iterate
-- **GitHub Copilot CLI:** terminal-native scaffolding
-- **Claude:** Artifacts and Projects for design and copy
-- **ChatGPT Canvas:** collaborative editing
-- **Google Gemini:** multimodal grounding and Canvas
-
-</v-clicks>
-
-<p v-after class="mt-6 text-sm text-gray-600">One master prompt. Five platforms. Pick the one you will actually use.</p>
-
----
-layout: section
----
-
-# Phase 1: Define
-
-10 minutes
-
----
-
-# Define: the only 3 questions that matter
-
-<v-clicks>
-
-1. **Who are you to this audience?** Role and value prop in one line.
-2. **What do you want them to do after visiting?** Apply, contact, hire, follow.
-3. **What words capture your voice?** Three to five keywords, not adjectives like "passionate."
-
-</v-clicks>
-
-<p v-after class="mt-8 text-sm text-gray-600 italic">If you cannot answer these, no amount of design will save the site.</p>
-
----
-
-# Define: voice over vibes
-
-<div class="mb-2 font-mono text-xs uppercase tracking-widest" style="color: #525252">before</div>
-<div class="mb-6 p-4 rounded-lg text-sm italic" style="background: #7f1d1d; border: 1px solid #991b1b; color: #fecaca">
-  "I am a passionate, innovative engineer leveraging cutting-edge AI."
+<!-- ============================================================
+     SLIDE 2 — Presenters  (Image 1 pattern: images above text)
+     ============================================================ -->
+<div class="presenters-slide">
+  <div class="presenters-label">Your instructors today</div>
+  <div class="presenters-grid">
+    <PresenterCard
+      name="Brett Reifers"
+      title="Senior Product Manager, Microsoft"
+      subtitle="AI Portfolio Workshop"
+    />
+    <PresenterCard
+      name="Leonard Boussioux"
+      title="Professor of GenAI, Foster School of Business, University of Washington"
+    />
+  </div>
 </div>
-
-<div v-click class="mb-2 font-mono text-xs uppercase tracking-widest" style="color: #525252">after</div>
-<div v-click class="mb-6 p-4 rounded-lg" style="background: #064e3b; border: 1px solid #047857; color: #a7f3d0">
-  "I ship AI agents that actually run in production. I write about what breaks."
-</div>
-
-<div v-click class="text-sm" style="color: #374151">
-  <strong style="color: #111827">Banned vocabulary</strong> (subset): delve, showcase, robust, seamless, cutting-edge, innovative, dive into. Full list: <code>content-voice/banned-phrases.md</code>
-</div>
-
----
-
-# Define: prompt to draft your identity
-
-Paste into Claude or Gemini:
-
-```
-Help me draft 3 versions of a portfolio identity statement.
-Role: {ROLE}. Audience: {AUDIENCE}.
-3 things I have shipped: {3_PROJECTS}.
-3 voice keywords: {VOICE_KEYWORDS}.
-
-Output 3 versions, each: 1 line role+value prop, 2-paragraph about,
-1-line CTA. No banned phrases (delve, showcase, robust, seamless,
-cutting-edge, innovative). Verbs over adjectives.
-```
-
----
-layout: section
----
-
-# Phase 2: Design
-
-15 minutes
 
 <style>
 .slidev-layout {
-  background: linear-gradient(135deg, #0a0a0a 0%, #0c1628 55%, #0a0a0a 100%);
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
 }
-</style>
-
----
-layout: showcase
-class: dark-slide
----
-
-## Tokens beat decisions
-
-Don't pick colors slide-by-slide. Pick a system once.
-
-| Layer | Tokens | Example |
-|-------|--------|---------|
-| **Color** | `--bg` `--surface` `--accent` | warm neutrals, one blue |
-| **Type** | display, body, mono stacks | system stack, JetBrains Mono |
-| **Spacing** | one scale used everywhere | 0.25 to 8 rem |
-| **Radius** | 1-2 values total | 4px controls, 8px cards |
-
-<p class="mt-4 text-sm" style="color: #A3A3A3">Full defaults in <code>design.md</code> in the repo.</p>
-
-::right::
-
-<ColorPalette mode="dark" />
-
----
-layout: two-cols
-class: design-demo dark-slide
----
-
-### Type scale
-
-<TypeScale />
-
-::right::
-
-### Spacing scale
-
-<SpacingScale />
-
-<style>
-.design-demo h3 {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 0.65rem;
+.presenters-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 2rem;
+}
+.presenters-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #60A5FA;
-  margin-bottom: 0.875rem;
-  font-weight: 400;
+  color: #D4A853;
+  font-weight: 700;
+}
+.presenters-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 680px;
 }
 </style>
 
----
-class: dark-slide
+<!--
+Introduce yourselves. Brett: PM at Microsoft, building AI demos and workshops.
+Leonard: Professor of GenAI at UW Foster. We will walk you through
+a real workflow from prompt to deployed site.
+-->
+
 ---
 
-# Design: pick ONE aesthetic
+<!-- ============================================================
+     SLIDE 3 — Who this is for + Agenda
+     ============================================================ -->
 
-<div class="aesthetic-grid mt-4">
-  <AestheticCard v-click name="Editorial-minimal" bestFor="Writers, researchers, designers" :palette="['#FAFAF9', '#0A0A0A', '#2563EB']" />
-  <AestheticCard v-click name="Neo-brutalist" bestFor="Indie devs, makers, distinct voice" :palette="['#F5F5F4', '#000000', '#DC2626']" />
-  <AestheticCard v-click name="Glass + gradient" bestFor="Designers, frontend engineers" :palette="['#312e81', '#FFFFFF', '#818cf8']" />
-  <AestheticCard v-click name="Terminal-monospace" bestFor="Backend, infra, security" :palette="['#0A0A0A', '#10B981', '#10B981']" />
+<div class="agenda-slide">
+  <div class="agenda-left">
+    <div class="section-label">Who this is for</div>
+    <ul class="audience-list">
+      <li v-click><strong>New to AI tools</strong> — want a portfolio shipped today</li>
+      <li v-click><strong>Already use AI</strong> — want sharper prompts and deeper tricks</li>
+      <li v-click>You have 1 hour and a laptop</li>
+    </ul>
+    <p v-after class="audience-note">You will leave with a deployed site.</p>
+  </div>
+  <div class="agenda-right">
+    <div class="section-label">Today's agenda</div>
+    <table class="agenda-table">
+      <tbody>
+        <tr><td class="time">5 min</td><td class="phase">Welcome</td><td class="outcome">Set the stage</td></tr>
+        <tr class="highlight"><td class="time">10 min</td><td class="phase">Define</td><td class="outcome">Identity + voice</td></tr>
+        <tr class="highlight"><td class="time">15 min</td><td class="phase">Design</td><td class="outcome">Tokens + layout</td></tr>
+        <tr class="highlight"><td class="time">15 min</td><td class="phase">Develop</td><td class="outcome">Generate + refine</td></tr>
+        <tr class="highlight gold"><td class="time">10 min</td><td class="phase">Deploy</td><td class="outcome">Live URL</td></tr>
+        <tr><td class="time">5 min</td><td class="phase">Wrap + Q&A</td><td class="outcome">Take-home toolkit</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<p v-after class="mt-4 text-sm" style="color: #A3A3A3">Mixing aesthetics produces slop. Pick one. Commit.</p>
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+}
+.agenda-slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  height: 100%;
+  padding: 1rem 0;
+}
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #D4A853;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.audience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.audience-list li {
+  font-size: 0.9rem;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.4;
+}
+.audience-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #4B2E83;
+  font-weight: 700;
+}
+.audience-note {
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: #6B7280;
+  font-style: italic;
+}
+.agenda-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.agenda-table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid #F3F4F6;
+  vertical-align: middle;
+}
+.time { color: #9CA3AF; font-family: "JetBrains Mono", monospace; white-space: nowrap; }
+.phase { font-weight: 700; color: #111827; }
+.outcome { color: #6B7280; }
+.highlight .phase { color: #4B2E83; }
+.gold .phase { color: #B7A57A; font-weight: 800; }
+.gold .time { color: #D4A853; }
+</style>
+
+---
+
+<!-- ============================================================
+     SLIDE 4 — Working Backwards
+     ============================================================ -->
+
+# Working Backwards
+
+<div class="wb-intro" v-click>
+  The goal: a <strong style="color: #D4A853">deployed web application</strong> you can share with one link.
+  To get there, three pillars must come first.
+</div>
+
+<div v-after style="margin-top: 2rem;">
+  <WorkingBackwards />
+</div>
 
 <style>
-.aesthetic-grid {
+.slidev-layout {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+}
+.slidev-layout h1 {
+  color: #4B2E83;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+.wb-intro {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+  max-width: 55ch;
+}
+</style>
+
+<!--
+We are going to work backwards from the deployed product.
+Most people jump straight to building. We start with: what are we proud to share?
+Define, Design, Develop in that order — then Deploy.
+-->
+
+---
+
+<!-- ============================================================
+     SLIDE 5 — Vibe Demo (Lovable)
+     ============================================================ -->
+
+<div class="vibe-slide">
+  <div class="vibe-left">
+    <div class="section-label" style="color: #D4A853;">Vibe Demo</div>
+    <h2 class="vibe-heading">Rapid prototype with Lovable</h2>
+    <p class="vibe-body">
+      Type a prompt. Get a deployed app. That is Define, Design, Develop, and Deploy in one session.
+    </p>
+    <p class="vibe-body" style="margin-top: 0.5rem;">
+      Here is a live example built in one sitting:
+    </p>
+    <a
+      href="https://expert-profile-kit.lovable.app"
+      class="gold-cta"
+      target="_blank"
+      rel="noopener"
+      style="margin-top: 1rem; width: fit-content;"
+    >
+      expert-profile-kit.lovable.app →
+    </a>
+  </div>
+  <div class="vibe-right">
+    <!--
+      Save the Lovable dashboard screenshot as public/lovable-screenshot.png
+      The purple gradient shows as a fallback until the file is present.
+    -->
+    <img
+      :src="`/lovable-screenshot.png`"
+      alt="Lovable dashboard — What should we build, Brett?"
+      class="vibe-screenshot"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+    />
+    <div class="vibe-screenshot-fallback">
+      <span>Save screenshot to public/lovable-screenshot.png</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+}
+.vibe-slide {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2.5rem;
+  align-items: center;
+  height: 100%;
+}
+.vibe-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #4B2E83;
+  margin: 0.5rem 0 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.vibe-body {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+}
+.vibe-screenshot {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(75, 46, 131, 0.25);
+  border: 2px solid #EDE8F5;
+  display: block;
+}
+.vibe-screenshot-fallback {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2D1A52 0%, #4B2E83 50%, #D4A853 100%);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+}
+</style>
+
+---
+
+<!-- ============================================================
+     SLIDE 6 — Challenge
+     ============================================================ -->
+
+<div class="challenge-slide">
+  <div class="challenge-tag">The catch</div>
+  <h1 class="challenge-heading">But what if I want<br>something <em>different?</em></h1>
+  <p class="challenge-body" v-click>
+    Vibe coding is fast. Vibe coding is fun. But the result is often <strong>generic</strong>.
+  </p>
+  <p class="challenge-body" v-click>
+    What if you want your portfolio to actually <strong>reflect you</strong> — your aesthetic,
+    your voice, your standards?
+  </p>
+  <p class="challenge-cta" v-click>
+    That is what the next section is for.
+  </p>
+</div>
+
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+}
+.challenge-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 680px;
+  gap: 1.25rem;
+}
+.challenge-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #D4A853;
+  font-weight: 700;
+}
+.challenge-heading {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #0A0A0A;
+  margin: 0;
+}
+.challenge-heading em {
+  color: #4B2E83;
+  font-style: normal;
+}
+.challenge-body {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+}
+.challenge-cta {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4B2E83;
+  margin: 0;
+}
+</style>
+
+---
+
+<!-- ============================================================
+     SLIDE 7 — "Jibe" Coding  (Image 2 pattern: tabbed nav)
+     ============================================================ -->
+
+<div class="proto-slide">
+  <div class="proto-header">
+    <div class="section-label" style="color: #D4A853;">Step-by-step</div>
+    <h2 class="proto-heading">Prototyping with agents...</h2>
+    <p class="proto-sub">Click a phase to see what to do and what to prompt.</p>
+  </div>
+  <TabWorkflow />
+</div>
+
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+}
+.proto-slide {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  padding-top: 0.25rem;
+}
+.proto-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.proto-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #4B2E83;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.proto-sub {
+  font-size: 0.8rem;
+  color: #9CA3AF;
+  margin: 0;
+}
+</style>
+
+<!--
+Click through each tab during the live walkthrough.
+Each tab shows the key goal, action bullets, and a copy-paste prompt.
+-->
+
+---
+
+<!-- ============================================================
+     SLIDE 8 — Jibe Demo (placeholder)
+     ============================================================ -->
+
+<div class="demo-slide">
+  <div class="demo-tag">Live Demo</div>
+  <h1 class="demo-heading">New Demo</h1>
+  <p class="demo-body">Switching to browser — final project examples.</p>
+  <div class="demo-pill">
+    <span>github.com/BrettReifs/ai-portfolio-workshop</span>
+    <span class="demo-pill-sep">·</span>
+    <span>examples/</span>
+  </div>
+</div>
+
+<style>
+.slidev-layout {
+  background: linear-gradient(160deg, #EDE8F5 0%, #FFFFFF 60%) !important;
+  color: #0A0A0A !important;
+}
+.demo-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 1.25rem;
+}
+.demo-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #D4A853;
+  font-weight: 700;
+}
+.demo-heading {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #4B2E83;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.demo-body {
+  font-size: 1.1rem;
+  color: #6B7280;
+  margin: 0;
+}
+.demo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  background: rgba(75, 46, 131, 0.08);
+  border: 1px solid #D4C8F0;
+  border-radius: 9999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: #4B2E83;
+}
+.demo-pill-sep { color: #D4A853; font-weight: 700; }
+</style>
+
+<!--
+Switch to browser here. Walk through deployed project examples.
+Return to slides when done.
+-->
+
+---
+
+<!-- ============================================================
+     SLIDE 9 — Post-Launch Skills & Tips
+     ============================================================ -->
+
+# Post-Launch Skills & Tips
+
+<div class="skills-intro" v-click>
+  Shipping the first version is the beginning, not the end.
+</div>
+
+<div class="skills-grid" v-after>
+  <div class="skill-card" v-click>
+    <div class="skill-icon">✍</div>
+    <div class="skill-name">Write about what you build</div>
+    <div class="skill-detail">One post per project shipped. Verbs over adjectives. Build the audience while you build the thing.</div>
+  </div>
+  <div class="skill-card" v-click>
+    <div class="skill-icon">⚙</div>
+    <div class="skill-name">Use the 5 agent skills</div>
+    <div class="skill-detail">Drop <code>.github/skills/</code> into Claude Projects or Copilot CLI. Each skill is a reusable workflow, not a one-time prompt.</div>
+  </div>
+  <div class="skill-card" v-click>
+    <div class="skill-icon">↺</div>
+    <div class="skill-name">Iterate publicly</div>
+    <div class="skill-detail">Version your DESIGN.md and DEFINE.prompt.md. Let the diff tell the story of how your thinking evolves.</div>
+  </div>
+  <div class="skill-card" v-click>
+    <div class="skill-icon">◎</div>
+    <div class="skill-name">Raise the quality bar over time</div>
+    <div class="skill-detail">Lighthouse ≥ 90. No cookie banners. Works offline. Each of these is a story about your standards.</div>
+  </div>
+</div>
+
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+}
+.slidev-layout h1 {
+  color: #4B2E83;
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+.skills-intro {
+  font-size: 0.925rem;
+  color: #374151;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+.skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.875rem;
 }
+.skill-card {
+  padding: 1rem 1.125rem;
+  border: 1px solid #E5E5E5;
+  border-left: 3px solid #4B2E83;
+  border-radius: 8px;
+  background: #FAFAF9;
+}
+.skill-icon {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+.skill-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+.skill-detail {
+  font-size: 0.75rem;
+  color: #6B7280;
+  line-height: 1.5;
+}
+.skill-detail code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  background: #EDE8F5;
+  color: #4B2E83;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
 </style>
 
 ---
 
-# Design: reference, don't copy
+<!-- ============================================================
+     SLIDE 10 — Closing Q&A
+     ============================================================ -->
 
-Find 1-3 sites you love. Don't list 10. Don't say "Apple-style."
+<div class="close-slide">
+  <div class="close-label">University of Washington · Foster School of Business</div>
+  <h1 class="close-heading">Questions?</h1>
+  <p class="close-sub">Share your deployed URL in the repo Discussion thread.</p>
 
-<v-clicks>
-
-Tell the AI exactly what you want to borrow:
-
-- "Match the spacing rhythm of site A"
-- "Match the color restraint of site B"
-- "Match the typography hierarchy of site C"
-
-</v-clicks>
-
-<p v-after class="mt-6 text-sm" style="color: #4b5563">Specific references produce specific outputs.</p>
-
----
-
-# Design: the multimodal trick (Gemini)
-
-Drag in 2-3 reference screenshots. Ask Gemini to:
-
-<v-clicks>
-
-1. Extract the color palette from image 1
-2. Identify the spacing scale from image 2
-3. Describe the type hierarchy in image 3
-4. **Synthesize** a token set that combines all three
-
-</v-clicks>
-
-<p v-after class="mt-6 text-sm" style="color: #4b5563">Gemini is best-in-class at multimodal grounding. Use it for this step.</p>
-
----
-layout: section
----
-
-# Phase 3: Develop
-
-15 minutes
-
----
-
-# Develop: the master prompt
-
-Open `portfolio-prompt.md`. One file, copy/paste ready.
-
-Fill these placeholders (5 minutes):
-
-<v-clicks>
-
-- `{NAME}`, `{ROLE}`, `{VALUE_PROP}`
-- `{AUDIENCE}`, `{DESIRED_ACTION}`, `{VOICE_KEYWORDS}`
-- `{PROJECTS}` (3-6 raw bullets, AI tightens them)
-- `{AESTHETIC}`, `{REFERENCES}`
-- `{FRAMEWORK}`, `{DEPLOY_TARGET}`
-
-</v-clicks>
-
----
-
-# Develop: pick your platform
-
-| You want... | Use |
-|-------------|-----|
-| Zero-config full-stack site | **Lovable** |
-| Terminal control, git from minute 1 | **Copilot CLI** |
-| Single HTML file, design-tight | **Claude Artifacts** |
-| Iterative copy refinement | **ChatGPT Canvas** |
-| Multimodal references to design tokens | **Gemini Canvas** |
-
-<p class="mt-4 text-sm" style="color: #4b5563">You can hand off mid-flight. Generate in Lovable, refine copy in Canvas, polish in Claude.</p>
-
----
-
-# Develop: live demo (Lovable path)
-
-<v-clicks>
-
-1. Paste master prompt into Lovable
-2. Lovable scaffolds a Next.js project with live preview
-3. Iterate by chatting: "Make the hero tighter, drop the gradient, increase line height."
-4. Click "Connect to GitHub" and done
-
-</v-clicks>
-
-<p v-after class="mt-6 text-sm" style="color: #4b5563">Total time: <strong>5-8 minutes</strong> for a working site.</p>
-
----
-
-# Develop: live demo (Copilot CLI path)
-
-```bash
-mkdir my-portfolio && cd my-portfolio
-copilot
-> Create a single-file HTML portfolio implementing the spec in
-  the attached portfolio-prompt.md. Use plain HTML/CSS/JS,
-  no build step, system fonts, dark mode via prefers-color-scheme.
-```
-
-<p class="mt-4 text-sm" style="color: #4b5563">Then iterate: "Tighten the hero. Add a focus state. Drop the box shadow."</p>
-
-<p class="mt-2 text-sm" style="color: #4b5563">Best for people who want git history from minute 1.</p>
-
----
-
-# Develop: kill the slop pass
-
-After generation, run this against your output:
-
-```
-Rewrite all body copy in this voice: {VOICE_KEYWORDS}.
-Remove these phrases entirely: delve, showcase, robust,
-seamless, cutting-edge, innovative, dive into, deep dive,
-it's worth noting, in today's fast-paced world.
-Replace adjectives with verbs and outcomes.
-Read-aloud test: if it sounds like AI, rewrite it.
-```
-
-<p class="mt-2 text-xs" style="color: #525252">Full list: <code>content-voice/banned-phrases.md</code></p>
-
-<div class="mt-5 px-4 py-3 rounded-lg text-sm" style="background: #064e3b; border: 1px solid #047857; color: #a7f3d0">
-  This single pass is worth more than 10 design tweaks.
+  <div class="close-links">
+    <a
+      href="https://github.com/BrettReifs/ai-portfolio-workshop"
+      class="close-repo"
+      target="_blank"
+      rel="noopener"
+    >
+      github.com/BrettReifs/ai-portfolio-workshop
+    </a>
+    <div class="close-divider"></div>
+    <div class="close-examples">
+      <span class="close-ex-label">Deployed examples</span>
+      <a href="https://expert-profile-kit.lovable.app" target="_blank" rel="noopener" class="close-ex-link">expert-profile-kit.lovable.app</a>
+    </div>
+  </div>
 </div>
 
----
-layout: section
----
+<style>
+.slidev-layout {
+  background: linear-gradient(135deg, #2D1A52 0%, #4B2E83 50%, #1a0a30 100%) !important;
+  color: #FFFFFF !important;
+}
+.close-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 1.25rem;
+}
+.close-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(212, 168, 83, 0.85);
+  font-weight: 600;
+}
+.close-heading {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0;
+}
+.close-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+}
+.close-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  margin-top: 0.5rem;
+}
+.close-repo {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: rgba(212, 168, 83, 0.15);
+  border: 1px solid rgba(212, 168, 83, 0.4);
+  border-radius: 9999px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  color: #D4A853;
+  text-decoration: none;
+}
+.close-divider {
+  width: 2rem;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+}
+.close-examples {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.close-ex-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.4);
+}
+.close-ex-link {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+}
+.close-ex-link:hover { color: #D4A853; }
+</style>
 
-# Phase 4: Deploy
-
-10 minutes
-
----
-
-# Deploy: GitHub Pages (recommended)
-
-```bash
-gh repo create my-portfolio --public --source=. --push
-gh repo edit --enable-pages --pages-branch main
-```
-
-Or in the UI: **Settings** then **Pages** then **Source: GitHub Actions**.
-
-<p class="mt-6 text-sm" style="color: #4b5563">Live URL: <code>https://{your-username}.github.io/my-portfolio/</code></p>
-
----
-
-# Deploy: Vercel (1-click)
-
-```bash
-npm i -g vercel
-vercel
-```
-
-Follow prompts. Live in ~30 seconds. Free for personal use.
-
-Custom domain: `vercel domains add yourdomain.com`
-
----
-
-# Deploy: the 5-point pre-flight
-
-Before you share the URL:
-
-<v-clicks>
-
-1. Lighthouse >= 90 across Performance, Accessibility, Best Practices, SEO
-2. `<title>` and `<meta name="description">` set
-3. Open Graph image (1200x630) for social previews
-4. Tested on mobile (resize the browser at minimum)
-5. One person other than you has read it without confusion
-
-</v-clicks>
-
----
-layout: section
----
-
-# Wrap
-
-5 minutes
-
----
-
-# What you have now
-
-<v-clicks>
-
-- A live portfolio URL
-- A reusable master prompt that works across 5 platforms
-- Five skills in `/skills` you can drop into Copilot or Claude
-- Two reference examples to fork and extend
-- A design system you can take into every future project
-
-</v-clicks>
-
-<p v-after class="mt-6 text-sm" style="color: #4b5563">Star the repo. Fork it. Extend it. Send me what you ship.</p>
-
----
-
-# Take-home: 5 Agent Skills
-
-In `.github/skills/`:
-
-<v-clicks>
-
-- **portfolio-architect:** turns raw info into a site structure with success metrics
-- **content-voice:** applies your voice keywords, kills slop phrases
-- **visual-design:** emits design tokens and layout decisions from references
-- **frontend-design:** translates tokens into shippable HTML/CSS with a11y and performance
-- **deploy-helper:** walks through GitHub Pages or Vercel deployment
-
-</v-clicks>
-
-<p v-after class="mt-4 text-sm" style="color: #4b5563">Each skill is a markdown file. Drop into Claude Projects or reference from Copilot CLI.</p>
-
----
-
-# Beginner next steps
-
-<v-clicks>
-
-1. Add a second page for writing or talks
-2. Add a custom domain (Vercel makes this 2 minutes)
-3. Generate an Open Graph image with Gemini or Midjourney and wire it up
-
-</v-clicks>
-
----
-
-# Advanced next steps
-
-<v-clicks>
-
-1. Wire a CMS-free blog (Astro content collections, or `posts.json` fetched at build time)
-2. Add view-source-friendly progressive enhancement
-3. Build a Copilot CLI extension that scaffolds new project entries from the command line
-4. Add Plausible or Umami analytics (privacy-respecting, no cookie banner needed)
-
-</v-clicks>
-
----
-layout: center
-class: text-center
----
-
-# Questions?
-
-<div class="mt-8 font-mono text-sm" style="color: #525252">github.com/BrettReifs/ai-portfolio-workshop</div>
+<!--
+Thank you. Drop your deployed URL in the GitHub Discussion.
+We will review and give feedback on a few live.
+-->
