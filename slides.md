@@ -101,10 +101,16 @@ You will leave today with a live portfolio URL.
       name="Brett Reifers"
       title="Senior Product Manager, Microsoft"
       subtitle="AI Portfolio Workshop"
+      image="/profile-brett.jpg"
+      imagePosition="50% -10%"
+      :imageScale="2"
     />
     <PresenterCard
       name="Leonard Boussioux"
       title="Professor of GenAI, Foster School of Business, University of Washington"
+      image="/profile-leo-40.jpg"
+      imagePosition="50% 40%"
+      :imageScale="0.85"
     />
   </div>
 </div>
@@ -154,11 +160,11 @@ a real workflow from prompt to deployed site.
   <div class="agenda-left">
     <div class="section-label">Who this is for</div>
     <ul class="audience-list">
-      <li v-click><strong>New to AI tools</strong> — want a portfolio shipped today</li>
-      <li v-click><strong>Already use AI</strong> — want sharper prompts and deeper tricks</li>
-      <li v-click>You have 1 hour and a laptop</li>
+      <li><strong>New to AI tools?</strong> let's ship something simple</li>
+      <li><strong>Already use AI?</strong> let's progress even further</li>
+      <li>You have 1 hour, a laptop (or mobile device), internet access</li>
     </ul>
-    <p v-after class="audience-note">You will leave with a deployed site.</p>
+    <p class="audience-note">You will leave with a deployed site.</p>
   </div>
   <div class="agenda-right">
     <div class="section-label">Today's agenda</div>
@@ -179,13 +185,15 @@ a real workflow from prompt to deployed site.
 .slidev-layout {
   background: #FFFFFF !important;
   color: #0A0A0A !important;
+  display: flex !important;
+  align-items: center !important;
 }
 .agenda-slide {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: start;
-  height: 100%;
+  width: 100%;
   padding: 1rem 0;
 }
 .section-label {
@@ -443,13 +451,13 @@ Define, Design, Develop in that order — then Deploy.
 ---
 
 <!-- ============================================================
-     SLIDE 7 — "Jibe" Coding  (Image 2 pattern: tabbed nav)
+     SLIDE 7 — "Jibe" Coding  (tabbed nav)
      ============================================================ -->
 
 <div class="proto-slide">
   <div class="proto-header">
     <div class="section-label" style="color: #D4A853;">Step-by-step</div>
-    <h2 class="proto-heading">Prototyping with agents...</h2>
+    <h2 class="proto-heading">How to <em>Jibe</em> Code</h2>
     <p class="proto-sub">Click a phase to see what to do and what to prompt.</p>
   </div>
   <TabWorkflow />
@@ -569,30 +577,30 @@ Return to slides when done.
 
 # Post-Launch Skills & Tips
 
-<div class="skills-intro" v-click>
+<div class="skills-intro">
   Shipping the first version is the beginning, not the end.
 </div>
 
-<div class="skills-grid" v-after>
-  <div class="skill-card" v-click>
+<div class="skills-grid">
+  <div class="skill-card">
     <div class="skill-icon">✍</div>
     <div class="skill-name">Write about what you build</div>
-    <div class="skill-detail">One post per project shipped. Verbs over adjectives. Build the audience while you build the thing.</div>
+    <div class="skill-detail">One post or share per project shipped. Verbs over adjectives. You build community while your agents build the things.</div>
   </div>
-  <div class="skill-card" v-click>
+  <div class="skill-card">
     <div class="skill-icon">⚙</div>
-    <div class="skill-name">Use the 5 agent skills</div>
-    <div class="skill-detail">Drop <code>.github/skills/</code> into Claude Projects or Copilot CLI. Each skill is a reusable workflow, not a one-time prompt.</div>
+    <div class="skill-name">Use your <em>skills</em></div>
+    <div class="skill-detail">Drop agent or <code>.github/skills/</code> into projects and repos. Each skill is a reusable workflow, not a one-time prompt.</div>
   </div>
-  <div class="skill-card" v-click>
+  <div class="skill-card">
     <div class="skill-icon">↺</div>
     <div class="skill-name">Iterate publicly</div>
-    <div class="skill-detail">Version your DESIGN.md and DEFINE.prompt.md. Let the diff tell the story of how your thinking evolves.</div>
+    <div class="skill-detail">Git version your DESIGN.md and DEFINE.md. Let the difference show and tell the story of how your thinking evolves.</div>
   </div>
-  <div class="skill-card" v-click>
+  <div class="skill-card">
     <div class="skill-icon">◎</div>
     <div class="skill-name">Raise the quality bar over time</div>
-    <div class="skill-detail">Lighthouse ≥ 90. No cookie banners. Works offline. Each of these is a story about your standards.</div>
+    <div class="skill-detail"><em>EVALS!!!</em> Lighthouse ≥ 90. No cookie banners. Works offline. Each of these is a story about your standards.</div>
   </div>
 </div>
 
