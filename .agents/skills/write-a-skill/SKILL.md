@@ -6,7 +6,7 @@ tools: [read, search, create, edit]
 
 # Writing Skills
 
-A skill is a `SKILL.md` file under `~/.copilot/skills/<name>/` (user-level, available everywhere) or `.github/skills/<name>/` (repo-level, overrides user-level inside one repo).
+A skill is a `SKILL.md` file under `~/.copilot/skills/<name>/` (user-level, available everywhere) or `.agents/skills/<name>/` (repo-level, overrides user-level inside one repo).
 
 ## Process
 

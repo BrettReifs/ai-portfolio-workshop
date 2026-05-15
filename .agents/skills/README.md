@@ -24,7 +24,7 @@ This pattern (progressive disclosure) keeps context lean and skills portable.
 ## Using skills
 
 ### GitHub Copilot CLI / Claude Code
-Skills in `.github/skills/` are auto-discovered when you run an agent in this repo.
+Skills in `.agents/skills/` are auto-discovered when you run an agent in this repo.
 
 ### Claude.ai (paid plans)
 Upload a skill folder via Settings → Skills → Upload skill.
@@ -33,7 +33,7 @@ Upload a skill folder via Settings → Skills → Upload skill.
 See the [Skills API quickstart](https://docs.claude.com/en/api/skills-guide#creating-a-skill).
 
 ### Just copy them
-Each skill folder is self-contained. Copy any folder into your own `.github/skills/` (or `~/.copilot/skills/` for user-level) and it works.
+Each skill folder is self-contained. Copy any folder into your own `.agents/skills/` (or `~/.copilot/skills/` for user-level) and it works.
 
 ## Authoring conventions for this repo
 

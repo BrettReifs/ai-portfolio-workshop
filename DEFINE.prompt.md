@@ -96,12 +96,12 @@ You are an expert project portfolio designer and full-stack developer. Build me 
 ## After you generate
 
 1. Check the Lighthouse score. If <90 anywhere, ask the tool: "Get me to ≥90 on [metric]."
-2. Read the copy out loud. If it sounds like AI, ask: "Rewrite in {VOICE_KEYWORDS}, no banned phrases (delve, showcase, robust, seamless, cutting-edge, dive into)." Full list: `.github/skills/content-voice/banned-phrases.md`.
+2. Read the copy out loud. If it sounds like AI, ask: "Rewrite in {VOICE_KEYWORDS}, no banned phrases (delve, showcase, robust, seamless, cutting-edge, dive into)." Full list: `.agents/skills/content-voice/banned-phrases.md`.
 3. Ship it (see slides for deploy steps).
 
 ## Deeper context (optional)
 
-If your agent supports [Agent Skills](https://agentskills.io), point it at `.github/skills/` for richer context:
+If your agent supports [Agent Skills](https://agentskills.io), point it at `.agents/skills/` for richer context:
 - **portfolio-architect** — structure and section decisions
 - **define-design** — token system and aesthetic direction
 - **frontend-design** — HTML/CSS implementation patterns

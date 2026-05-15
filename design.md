@@ -2,9 +2,9 @@
 
 The design language for portfolios produced in this workshop. This file is the **workshop curriculum** — read it as part of the lesson. The full token reference and implementation patterns live inside the skills:
 
-- **Token system** (palette, type, spacing) → [`.github/skills/define-design/reference.md`](./.github/skills/define-design/reference.md)
-- **HTML/CSS implementation** (scaffolds, focus states, performance) → [`.github/skills/frontend-design/reference.md`](./.github/skills/frontend-design/reference.md)
-- **Anti-slop content rules** (banned phrases) → [`.github/skills/content-voice/banned-phrases.md`](./.github/skills/content-voice/banned-phrases.md)
+- **Token system** (palette, type, spacing) → [`.agents/skills/define-design/reference.md`](./.agents/skills/define-design/reference.md)
+- **HTML/CSS implementation** (scaffolds, focus states, performance) → [`.agents/skills/frontend-design/reference.md`](./.agents/skills/frontend-design/reference.md)
+- **Anti-slop content rules** (banned phrases) → [`.agents/skills/content-voice/banned-phrases.md`](./.agents/skills/content-voice/banned-phrases.md)
 
 ## Design principles
 
@@ -39,7 +39,7 @@ The design language for portfolios produced in this workshop. This file is the *
 - No em dashes. Use commas, periods, or parentheses.
 - Verbs over adjectives. *"Shipped 3 ML pipelines"* beats *"passionate about machine learning"*.
 - No *"I am a..."* openers. Start with what you do or what you've shipped.
-- Full banned-phrases list: [`content-voice/banned-phrases.md`](./.github/skills/content-voice/banned-phrases.md).
+- Full banned-phrases list: [`content-voice/banned-phrases.md`](./.agents/skills/content-voice/banned-phrases.md).
 
 ## Accessibility floor
 
@@ -59,4 +59,4 @@ The design language for portfolios produced in this workshop. This file is the *
 | LCP | <2.0s on 4G |
 | CLS | <0.1 |
 
-For the full pre-launch checklist, see [`deploy-helper/pre-flight-checklist.md`](./.github/skills/deploy-helper/pre-flight-checklist.md).
+For the full pre-launch checklist, see [`deploy-helper/pre-flight-checklist.md`](./.agents/skills/deploy-helper/pre-flight-checklist.md).

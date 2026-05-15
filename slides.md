@@ -257,7 +257,7 @@ a real workflow from prompt to deployed site.
 
 # Working Backwards
 
-<div class="wb-intro" v-click>
+<div class="wb-intro">
   The goal: a <strong style="color: #D4A853">deployed web application</strong> you can share with one link.
   To get there, three pillars must come first.
 </div>
@@ -384,20 +384,37 @@ Define, Design, Develop in that order — then Deploy.
 ---
 
 <!-- ============================================================
+     SLIDE 5b — Two prompt starters
+     ============================================================ -->
+
+<PromptStarters />
+
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+</style>
+
+---
+
+<!-- ============================================================
      SLIDE 6 — Challenge
      ============================================================ -->
 
 <div class="challenge-slide">
   <div class="challenge-tag">The catch</div>
   <h1 class="challenge-heading">But what if I want<br>something <em>different?</em></h1>
-  <p class="challenge-body" v-click>
+  <p class="challenge-body">
     Vibe coding is fast. Vibe coding is fun. But the result is often <strong>generic</strong>.
   </p>
-  <p class="challenge-body" v-click>
+  <p class="challenge-body">
     What if you want your portfolio to actually <strong>reflect you</strong> — your aesthetic,
     your voice, your standards?
   </p>
-  <p class="challenge-cta" v-click>
+  <p class="challenge-cta">
     That is what the next section is for.
   </p>
 </div>
@@ -572,6 +589,107 @@ Return to slides when done.
 ---
 
 <!-- ============================================================
+     SLIDE 8b — LiferMap demo (Professor Leo's deployed app)
+     ============================================================ -->
+
+<div class="lifermap-slide">
+  <div class="lifermap-bar">
+    <span class="lifermap-label">Live example</span>
+    <span class="lifermap-url">lifermap.com</span>
+    <a href="https://lifermap.com" target="_blank" rel="noopener" class="lifermap-open">↗ open in tab</a>
+  </div>
+  <div class="lifermap-frame-wrap">
+    <iframe
+      src="https://lifermap.com"
+      class="lifermap-frame"
+      title="LiferMap — Professor Leonard Boussioux"
+      allow="fullscreen"
+      loading="lazy"
+    ></iframe>
+    <div class="lifermap-blocked">
+      <p>This site cannot be embedded.</p>
+      <a href="https://lifermap.com" target="_blank" rel="noopener" class="gold-cta" style="margin-top:1rem;">Open lifermap.com →</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.slidev-layout {
+  background: #0A0A0A !important;
+  color: #FFFFFF !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.lifermap-slide {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.lifermap-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 1rem;
+  background: #111;
+  border-bottom: 1px solid #262626;
+  flex-shrink: 0;
+}
+.lifermap-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #D4A853;
+  font-weight: 700;
+}
+.lifermap-url {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  flex: 1;
+}
+.lifermap-open {
+  font-size: 0.68rem;
+  color: #7B5DB0;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.lifermap-open:hover { color: #D4A853; }
+.lifermap-frame-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+}
+.lifermap-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.lifermap-blocked {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #111;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  text-align: center;
+}
+</style>
+
+<!--
+If lifermap.com blocks iframe embedding (X-Frame-Options), the fallback
+text and "Open lifermap.com →" link will show instead.
+In that case, use the browser directly or click the "↗ open in tab" link.
+-->
+
+---
+
+<!-- ============================================================
      SLIDE 9 — Post-Launch Skills & Tips
      ============================================================ -->
 
@@ -590,7 +708,7 @@ Return to slides when done.
   <div class="skill-card">
     <div class="skill-icon">⚙</div>
     <div class="skill-name">Use your <em>skills</em></div>
-    <div class="skill-detail">Drop agent or <code>.github/skills/</code> into projects and repos. Each skill is a reusable workflow, not a one-time prompt.</div>
+    <div class="skill-detail">Drop agent or <code>.agents/skills/</code> into projects and repos. Each skill is a reusable workflow, not a one-time prompt.</div>
   </div>
   <div class="skill-card">
     <div class="skill-icon">↺</div>
