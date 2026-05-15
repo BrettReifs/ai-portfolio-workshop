@@ -1,0 +1,39 @@
+name: Update Gallery
+
+on:
+  discussion_comment:
+    types: [created, edited]
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    # Only run for the "Show and tell" discussion (#3) or manual dispatch
+    if: "github.event_name == 'workflow_dispatch' || github.event.discussion.number == 3"
+    permissions:
+      contents: write
+      discussions: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerate gallery cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/build-gallery.mjs
+
+      - name: Commit if gallery changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet public/gallery.html || (
+            git add public/gallery.html &&
+            git commit -m "chore: auto-update gallery from discussions
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>" &&
+            git push
+          )
