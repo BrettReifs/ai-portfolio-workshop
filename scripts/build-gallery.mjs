@@ -26,10 +26,11 @@ const DISCUSSION_NUMBER = 3;
 // ── GraphQL ────────────────────────────────────────────────────────────────
 
 const QUERY = `
-  query($owner: String!, $repo: String!, $number: Int!) {
+  query($owner: String!, $repo: String!, $number: Int!, $cursor: String) {
     repository(owner: $owner, name: $repo) {
       discussion(number: $number) {
-        comments(first: 100) {
+        comments(first: 100, after: $cursor) {
+          pageInfo { hasNextPage endCursor }
           nodes {
             body
             author {
@@ -58,11 +59,30 @@ async function graphql(query, variables) {
   return data;
 }
 
+/** Fetches all comments via cursor pagination (handles > 100 comments). */
+async function fetchAllComments() {
+  const all = [];
+  let cursor = null;
+  for (;;) {
+    const data = await graphql(QUERY, {
+      owner: OWNER, repo: REPO, number: DISCUSSION_NUMBER, cursor,
+    });
+    const discussion = data.repository?.discussion;
+    if (!discussion) throw new Error(`Discussion #${DISCUSSION_NUMBER} not found in ${OWNER}/${REPO}`);
+    const { nodes, pageInfo } = discussion.comments;
+    all.push(...nodes);
+    if (!pageInfo.hasNextPage) break;
+    cursor = pageInfo.endCursor;
+  }
+  return all;
+}
+
 // ── Parsing ────────────────────────────────────────────────────────────────
 
 function parseComment(body, author) {
-  // Extract first https URL, ignoring github.com links
-  const urlMatch = body.match(/https?:\/\/[^\s)>"'\]]+/g);
+  // Extract first https URL, ignoring github.com links.
+  // Strip trailing punctuation including closing parens/brackets.
+  const urlMatch = body.match(/https?:\/\/[^\s>"'\]\)]+/g);
   const url = urlMatch
     ?.map(u => u.replace(/[.,;:)>\]]+$/, ''))
     .find(u => !u.includes('github.com'));
@@ -135,17 +155,20 @@ function cardHtml({ url, name, note, displayUrl }) {
 
 // ── Main ───────────────────────────────────────────────────────────────────
 
-const data = await graphql(QUERY, {
-  owner: OWNER,
-  repo:  REPO,
-  number: DISCUSSION_NUMBER,
-});
-
-const comments = data.repository.discussion.comments.nodes;
+const comments = await fetchAllComments();
+console.log(`Fetched ${comments.length} comment(s) from discussion #${DISCUSSION_NUMBER}.`);
 
 const seen = new Set();
+const parseErrors = [];
 const cards = comments
-  .map(c => parseComment(c.body, c.author))
+  .map(c => {
+    try {
+      return parseComment(c.body, c.author);
+    } catch (err) {
+      parseErrors.push(`@${c.author?.login}: ${err.message}`);
+      return null;
+    }
+  })
   .filter(Boolean)
   .filter(card => {
     if (seen.has(card.url)) return false;
@@ -154,6 +177,10 @@ const cards = comments
   })
   .map(cardHtml)
   .join('\n\n');
+
+if (parseErrors.length) {
+  console.warn(`Parse warnings (these comments were skipped):\n  ${parseErrors.join('\n  ')}`);
+}
 
 const galleryPath = join(__dirname, '..', 'public', 'gallery.html');
 const html = readFileSync(galleryPath, 'utf8');

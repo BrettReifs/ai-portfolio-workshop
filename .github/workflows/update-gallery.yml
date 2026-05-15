@@ -35,5 +35,6 @@ jobs:
             git commit -m "chore: auto-update gallery from discussions
 
 Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>" &&
+            git pull --rebase origin main &&
             git push
           )
