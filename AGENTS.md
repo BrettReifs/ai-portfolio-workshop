@@ -95,6 +95,9 @@ summarize-then-continue | compact session, VS Code workaround, paste-ready summa
 context-hygiene         | repo health, stale files, uncommitted changes, orphaned artifacts | .github/skills/context-hygiene/SKILL.md
 zoom-out                | broader context, higher-level view, map codebase, unfamiliar area | .github/skills/zoom-out/SKILL.md
 
+### Installed skills (third-party)
+slidev                  | Slidev presentations, slide deck, Markdown slides, code highlighting, animations, Vue components | .agents/skills/slidev/SKILL.md
+
 ### Utility skills
 caveman                 | brief mode, less tokens, ultra-compressed, drop filler | .github/skills/caveman/SKILL.md
 autonomous-iteration    | autonomous experiment loop, single file, measurable metric, keep or discard | .github/skills/autonomous-iteration/SKILL.md
