@@ -24,7 +24,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "slidev build --base /ai-portfolio-workshop/",
-    "build:vercel": "slidev build",
+    "build:vercel": "slidev build && node scripts/copy-brettflix.mjs",
     "export": "slidev export",
     "dev:pro": "slidev slides-pro.md",
     "build:pro": "slidev build slides-pro.md --base /ai-portfolio-workshop/",
