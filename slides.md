@@ -738,7 +738,7 @@ Return to slides when done.
 ---
 
 <!-- ============================================================
-     SLIDE 8b — LiferMap demo (Professor Leo's deployed app)
+     SLIDE 12 — LiferMap demo (Professor Leo's deployed app)
      ============================================================ -->
 
 <div class="demo-wrapper">
@@ -747,7 +747,6 @@ Return to slides when done.
     class="demo-frame"
     title="LiferMap — Professor Leonard Boussioux"
     allow="fullscreen"
-    loading="lazy"
   ></iframe>
 </div>
 

@@ -49,62 +49,81 @@ No: delve, showcase, robust, seamless, innovative.`,
     cta: null,
   },
   DESIGN: {
-    headline: 'Lock in your tokens before you build',
+    headline: 'Decide how it looks before you build',
     items: [
-      { label: 'One palette', detail: 'bg / surface / accent. Both light and dark must hit WCAG AA. Commit before prompting.' },
-      { label: 'Type stack', detail: 'Display, body, mono. System fonts by default. One modular scale, ratio ~1.25.' },
-      { label: 'Spacing scale', detail: '0.25 to 8rem — one set of values everywhere. Never eyeball gaps between elements.' },
-      { label: 'Aesthetic anchor', detail: 'One phrase: editorial-minimal, neo-brutalist, terminal-monospace. Mixing produces slop.' },
-      { label: 'Reference sites', detail: 'Paste 1-3 URLs. Say what to borrow specifically: spacing rhythm, color density, type weight.' },
-      { label: 'Save as DESIGN.md', detail: 'Token file reused across every AI session. Lint with npx @google/design.md — a Google-promoted standard.' },
+      { label: 'Pick your feeling first', detail: 'One phrase: calm and minimal, bold and direct, editorial, warm. This is your anchor — give it to every prompt.' },
+      { label: 'Find 2-3 sites you love', detail: 'Screenshot or save the URLs. Note what to borrow: colors, how text is set, how much breathing room things have.' },
+      { label: 'Choose your colors', detail: 'A background, a text color, and one accent. Make sure they\'re readable together. Commit before you start prompting.' },
+      { label: 'Pick your fonts', detail: 'One for headlines, one for body text. System fonts (Inter, Georgia) load fast and look sharp. Simpler is better.' },
+      { label: 'Save your choices in a file', detail: 'Write decisions into DESIGN.md. Drop it into Lovable Knowledge so every session starts from the same baseline.' },
+      { label: 'Re-attach, don\'t reinvent', detail: 'Starting a new chat? Re-attach DESIGN.md. Prevents AI from guessing at your colors or layout mid-build.' },
     ],
-    prompt: `Extract a token set from my references and output a DESIGN.md file.
+    prompt: `I'm designing a personal portfolio website.
+Here's what I know about how I want it to look:
 
-Aesthetic: {AESTHETIC}
-References: {REFERENCES} (what to borrow from each)
-Color: {COLOR_PREFERENCE}
-Type: {TYPE_PREFERENCE} — default: system font stack
-Dark mode: {DARK_MODE}
+Feeling: {ONE_WORD_OR_PHRASE}
+Sites I like: {URLS_OR_DESCRIPTIONS}
+What I like about them: {WHAT_TO_BORROW}
+Colors I'm drawn to: {COLOR_PREFERENCES}
+Fonts I like: {FONT_PREFERENCES}
 
-Output tokens:
-- Color: bg, surface, text, muted, accent, border
-- Type: display / body / mono stacks + scale ratio
-- Spacing: 0.25rem step to 8rem
-- Radius: 1-2 values (4px controls, 8px cards)
-- Shadows: sm and md only
-
-WCAG AA contrast required. Output as a DESIGN.md code block.`,
-    promptLabel: 'Multimodal token extraction — paste with screenshots',
+Ask me questions to lock in my visual
+direction before we start building.
+Then summarize my choices as a DESIGN.md
+I can reuse in every future session.`,
+    promptLabel: 'Design direction prompt — talk it through first',
     cta: null,
   },
   DEVELOP: {
-    headline: 'Prompt → site in minutes',
+    headline: 'Step-by-step: spec in, site out',
     items: [
-      { label: 'Fill DEFINE.prompt.md', detail: '{NAME}, {ROLE}, {VALUE_PROP}, {AESTHETIC}, {DEPLOY_TARGET}' },
-      { label: 'Choose your platform', detail: 'Lovable · GitHub Copilot · Claude Artifacts · ChatGPT Canvas · Gemini' },
-      { label: 'Stop the slop', detail: 'Strip: delve, showcase, robust, seamless, cutting-edge, innovative.' },
-      { label: 'Iterate by chatting', detail: '"Make the hero tighter. Drop the gradient. Increase line height."' },
+      { label: 'Start in Plan mode', detail: 'Click Plan (or Alt+P). Lovable asks questions before writing code — catches misalignments before they cost you.' },
+      { label: '+ → Attach your spec files', detail: 'Upload DEFINE.prompt.md and design.md. Lovable loads them as context for the full session.' },
+      { label: '+ → Design for references', detail: 'Attach screenshots of sites to borrow from. Lovable\'s vision model extracts spacing, type, and color cues.' },
+      { label: '+ → Connectors / Databases', detail: 'Link Notion, Airtable, or a CMS if your content already exists. Real copy instead of placeholders.' },
+      { label: 'Follow the agentic prompts', detail: 'Lovable surfaces design directions — pick one, don\'t skip. Each choice narrows scope and prevents drift.' },
+      { label: 'Visual edits for tweaks', detail: 'After build, click Visual edits in the chat bar to target a specific element without describing it in words.' },
     ],
-    prompt: `Rewrite all body copy in this voice: {VOICE_KEYWORDS}.
-Remove: delve, showcase, robust, seamless, cutting-edge, innovative.
-Replace adjectives with verbs and outcomes.`,
-    promptLabel: 'Stop-slop pass (run after generation)',
+    prompt: `I'm building a personal portfolio.
+Files attached: DEFINE.prompt.md, DESIGN.md
+
+Start in Plan mode — ask me questions
+before writing any code.
+
+When ready to build:
+- Copy + structure: follow DEFINE.prompt.md
+- Follow DESIGN.md exactly
+- Show 2-3 design directions before committing
+
+No placeholder copy. No Lorem ipsum.
+No deviations from tokens in DESIGN.md.`,
+    promptLabel: 'Opening prompt — attach files first, then paste',
     cta: null,
   },
   DEPLOY: {
-    headline: 'Ship a URL you can share',
+    headline: 'Get a URL in under 5 minutes',
     items: [
-      { label: 'GitHub Pages', detail: 'gh repo create → Settings → Pages → GitHub Actions' },
-      { label: 'Vercel', detail: 'npm i -g vercel && vercel — live in ~30 seconds' },
-      { label: 'Pre-flight checklist', detail: 'Lighthouse ≥ 90, meta title, OG image, mobile tested' },
-      { label: 'Custom domain', detail: 'vercel domains add yourdomain.com — optional but worth it' },
+      { label: 'Step 1 — Deploy', detail: 'Click the Deploy button in the top navigation bar of your Lovable project.' },
+      { label: 'Step 2 — Publish', detail: 'Click Publish. Live instantly. No installs, no terminal.' },
+      { label: 'Step 3 — Copy your URL', detail: 'yourname.lovable.app — paste it anywhere, it works immediately.' },
+      { label: 'Custom domain (optional)', detail: 'Settings → Domain → Add domain → point DNS CNAME to lovable.app. ~2 min propagation.' },
+      { label: 'Pre-flight check', detail: 'Title tag, OG image in iMessage preview, phone layout. Lighthouse ≥90.' },
     ],
-    prompt: `gh repo create my-portfolio --public --source=. --push
-gh repo edit --enable-pages --pages-branch main
+    prompt: `Lovable — no terminal needed
+1. Open project in Lovable
+2. Click Deploy → Publish
+3. Copy your URL: yourname.lovable.app
 
-# or one-liner Vercel:
-npx vercel --yes`,
-    promptLabel: 'Deploy commands',
+Custom domain (optional)
+→ Settings → Domain → Add domain
+→ At your registrar: add CNAME → lovable.app
+→ Wait 2-5 min, then visit your domain
+
+─────────────────────────────
+Exported code? Use Vercel:
+→ vercel.com → New Project → Import Repo
+→ Click Deploy — no terminal needed`,
+    promptLabel: 'Step-by-step — Lovable first',
     cta: null,
   },
 }
@@ -162,13 +181,16 @@ npx vercel --yes`,
       >DEFINE.prompt.md on GitHub →</a>
     </div>
     <div v-if="activeTab === 'DESIGN'" class="tw-define-ref">
-      DESIGN.md is a token standard promoted by Google.
+      DESIGN.md is a reusable reference file — one source of truth for every AI session.
       <a
         href="https://github.com/BrettReifs/ai-portfolio-workshop/blob/main/design.md"
         target="_blank"
         rel="noopener"
         class="tw-define-ref-link"
-      >design.md on GitHub →</a>
+      >See the example on GitHub →</a>
+    </div>
+    <div v-if="activeTab === 'DEPLOY'" class="tw-define-ref">
+      Stuck? The most common blocker is DNS propagation — give it 5 minutes before troubleshooting.
     </div>
   </div>
 </template>
