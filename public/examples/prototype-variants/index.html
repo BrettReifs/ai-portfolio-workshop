@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" data-variant="1">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brett Reifers — Prototype Variants</title>
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── VARIANT ROUTING ── */
+    main { display: none; }
+    [data-variant="1"] main[data-v="1"] { display: block; }
+    [data-variant="2"] main[data-v="2"] { display: block; }
+    [data-variant="3"] main[data-v="3"] { display: block; }
+
+    /* ── PROTOTYPE SWITCHER ── */
+    .variant-bar {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: #111; color: #fff; border-radius: 100px;
+      padding: 8px 14px; display: flex; align-items: center; gap: 4px;
+      font-family: ui-monospace, monospace; font-size: 11px;
+      z-index: 9999; box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+      white-space: nowrap;
+    }
+    .var-label { letter-spacing: 0.12em; color: #555; margin-right: 6px; font-size: 10px; }
+    .var-btn {
+      padding: 4px 14px; border-radius: 100px; color: #777;
+      transition: all 0.15s; font-weight: 600; cursor: pointer;
+    }
+    .var-btn:hover { color: #fff; background: #2a2a2a; }
+    .var-btn.active { background: #fff; color: #111; }
+
+    /* ════════════════════════════════════════
+       VARIANT 1 — BENTO GRID
+       Axis: spatial/dashboard vs. sequential scroll
+    ════════════════════════════════════════ */
+    [data-variant="1"] body {
+      background: #EDEAE4;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: #1A1A1A;
+      min-height: 100vh;
+    }
+    .v1-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 24px 100px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 130px;
+      gap: 10px;
+    }
+    .tile {
+      border-radius: 18px;
+      padding: 22px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Row 1-2: Name + Bio */
+    .v1-name {
+      grid-column: span 5; grid-row: span 2;
+      background: #1A1A1A; color: #EDEAE4;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .v1-name h1 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.0; letter-spacing: -0.04em;
+    }
+    .v1-name .tile-role {
+      font-size: 0.7rem; color: #666; margin-top: 10px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .v1-bio {
+      grid-column: span 7; grid-row: span 2;
+      background: #D1FAE5; color: #064E3B;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .v1-bio p { font-size: 1.05rem; line-height: 1.55; }
+
+    /* Row 3: Stats + Stack */
+    .v1-stat {
+      grid-column: span 2;
+      background: #fff;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+    }
+    .v1-stat .n { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.05em; }
+    .v1-stat .l {
+      font-size: 0.65rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: #A3A3A3; margin-top: 2px;
+    }
+    .v1-status {
+      grid-column: span 2;
+      background: #FEF9C3; color: #713F12;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+    }
+    .v1-status .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: #16A34A; margin-bottom: 7px;
+      box-shadow: 0 0 0 3px rgba(22,163,74,0.25);
+    }
+    .v1-status span { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+    .v1-stack {
+      grid-column: span 4;
+      background: #6366F1; color: #fff;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .tile-eyebrow { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .chip {
+      background: rgba(255,255,255,0.15); border-radius: 100px;
+      padding: 3px 11px; font-size: 0.72rem; font-weight: 600;
+    }
+
+    /* Rows 4-5: Projects */
+    .v1-proj {
+      background: #fff;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .v1-proj.tall  { grid-column: span 4; grid-row: span 2; }
+    .v1-proj.wide  { grid-column: span 5; }
+    .v1-proj.sq    { grid-column: span 3; }
+    .proj-eye { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: #A3A3A3; }
+    .v1-proj h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; }
+    .v1-proj.tall h3 { font-size: 1.35rem; }
+    .v1-proj p { font-size: 0.78rem; color: #666; line-height: 1.45; }
+    .ptags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
+    .ptag {
+      font-size: 0.62rem; font-weight: 600; color: #6366F1;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      border: 1px solid #C7D2FE; border-radius: 4px; padding: 1px 7px;
+    }
+    .pbadge {
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 2px 9px; border-radius: 4px; align-self: flex-start;
+    }
+    .prod { background: #DCFCE7; color: #15803D; }
+    .active { background: #EFF6FF; color: #2563EB; }
+
+    /* CTA tile */
+    .v1-cta {
+      grid-column: span 3;
+      background: #1A1A1A; color: #EDEAE4;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .v1-cta .cta-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: #555; }
+    .v1-cta .cta-link {
+      font-size: 1.05rem; font-weight: 700; color: #EDEAE4;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cta-arrow {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: #fff; color: #111; font-size: 15px; flex-shrink: 0;
+    }
+
+    /* ════════════════════════════════════════
+       VARIANT 2 — BRUTALIST
+       Axis: anti-aesthetic raw typography vs. designed visual system
+    ════════════════════════════════════════ */
+    [data-variant="2"] body {
+      background: #fff;
+      font-family: 'Arial Black', 'Haettenschweiler', Arial, ui-sans-serif, sans-serif;
+      color: #000;
+      min-height: 100vh;
+    }
+    .v2-wrap { padding-bottom: 120px; }
+
+    .v2-topbar {
+      border-bottom: 3px solid #000;
+      padding: 14px 40px;
+      display: flex; align-items: baseline; justify-content: space-between;
+    }
+    .v2-logo { font-size: 0.9rem; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; }
+    .v2-nav { display: flex; }
+    .v2-nav a {
+      font-size: 0.72rem; font-weight: 900; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 3px 16px;
+      border-left: 2px solid #000;
+    }
+    .v2-nav a:last-child { border-right: 2px solid #000; }
+    .v2-nav a:hover { background: #000; color: #fff; }
+
+    .v2-hero {
+      border-bottom: 3px solid #000;
+      padding: 36px 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .v2-bg-word {
+      position: absolute; right: 24px; top: 12px;
+      font-size: clamp(80px, 16vw, 210px); font-weight: 900;
+      color: rgba(0,0,0,0.05); line-height: 1;
+      text-transform: uppercase; pointer-events: none; user-select: none;
+    }
+    .v2-headline {
+      font-size: clamp(56px, 9.5vw, 136px);
+      font-weight: 900; line-height: 0.92;
+      letter-spacing: -0.04em; text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+    .v2-headline em { font-style: normal; color: #FF2D20; }
+    .v2-role-tag {
+      display: inline-block;
+      background: #FF2D20; color: #fff;
+      font-size: 0.85rem; font-weight: 900; letter-spacing: 0.22em;
+      text-transform: uppercase; padding: 6px 16px; margin-top: 18px;
+    }
+    .v2-bio {
+      font-family: Arial, sans-serif; font-size: 1rem; font-weight: 400;
+      line-height: 1.5; max-width: 460px; margin-top: 20px; color: #333;
+    }
+
+    .v2-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-bottom: 3px solid #000;
+    }
+    .v2-stat-cell {
+      padding: 22px 32px; border-right: 2px solid #000;
+    }
+    .v2-stat-cell:last-child { border-right: none; }
+    .v2-stat-n { font-size: 2.8rem; font-weight: 900; line-height: 1; letter-spacing: -0.04em; }
+    .v2-stat-l { font-family: Arial, sans-serif; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #777; margin-top: 4px; }
+    .v2-stat-cell:nth-child(2) .v2-stat-n { color: #FF2D20; }
+
+    .v2-section-bar {
+      padding: 14px 40px; border-bottom: 2px solid #000;
+      display: flex; align-items: baseline; gap: 14px;
+    }
+    .v2-section-bar h2 { font-size: 0.88rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; }
+    .v2-section-bar .cnt { font-family: Arial, sans-serif; font-size: 0.72rem; color: #999; }
+
+    .v2-projects { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .v2-proj-cell {
+      border-right: 2px solid #000; border-bottom: 2px solid #000;
+      padding: 22px 30px;
+    }
+    .v2-proj-cell:nth-child(3n) { border-right: none; }
+    .v2-num {
+      font-size: 2.8rem; font-weight: 900; color: rgba(0,0,0,0.07);
+      line-height: 1; letter-spacing: -0.04em;
+    }
+    .v2-proj-cell h3 {
+      font-size: 1.1rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 0.04em; margin-top: -6px; line-height: 1.15;
+    }
+    .v2-proj-cell p {
+      font-family: Arial, sans-serif; font-size: 0.83rem;
+      line-height: 1.5; color: #444; margin-top: 8px; font-weight: 400;
+    }
+    .v2-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 12px; }
+    .v2-tag {
+      font-size: 0.6rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 0.1em; border: 2px solid #000; padding: 2px 8px;
+    }
+    .v2-tag.hero-tag { background: #FF2D20; color: #fff; border-color: #FF2D20; }
+
+    /* ════════════════════════════════════════
+       VARIANT 3 — PRINTED DOCUMENT
+       Axis: document/CV metaphor vs. web-native layout
+    ════════════════════════════════════════ */
+    [data-variant="3"] body {
+      background: #DDD9D0;
+      font-family: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+      color: #1C1917;
+      min-height: 100vh;
+      padding: 48px 24px 120px;
+    }
+    .v3-page {
+      max-width: 800px; margin: 0 auto;
+      background: #FAF7F1;
+      padding: 64px 72px;
+      box-shadow: 0 6px 48px rgba(0,0,0,0.14), 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .v3-nameplate {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding-bottom: 22px; border-bottom: 2px solid #1C1917; margin-bottom: 32px;
+    }
+    .v3-name { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+    .v3-sub { font-family: 'Courier New', ui-monospace, monospace; font-size: 0.78rem; color: #78716C; margin-top: 8px; }
+    .v3-contact { text-align: right; font-family: 'Courier New', ui-monospace, monospace; font-size: 0.72rem; line-height: 1.9; color: #57534E; }
+
+    .v3-sec { margin-bottom: 36px; }
+    .v3-sec-head { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #A8A29E; margin-bottom: 6px; }
+    .v3-rule { border: none; border-top: 1px solid #D6D3D1; margin-bottom: 18px; }
+    .v3-summary { font-size: 1.02rem; line-height: 1.72; color: #292524; font-style: italic; }
+
+    .v3-two { display: grid; grid-template-columns: 200px 1fr; gap: 48px; }
+
+    .v3-aside-sec { margin-bottom: 28px; }
+    .v3-aside-head { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: #A8A29E; margin-bottom: 8px; }
+    .v3-aside-rule { border: none; border-top: 1px solid #D6D3D1; margin-bottom: 10px; }
+    .v3-item { font-family: 'Courier New', ui-monospace, monospace; font-size: 0.78rem; color: #44403C; line-height: 2.05; }
+
+    .v3-entry { margin-bottom: 26px; }
+    .v3-entry-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+    .v3-entry-title { font-size: 1rem; font-weight: 700; }
+    .v3-entry-date { font-family: 'Courier New', ui-monospace, monospace; font-size: 0.72rem; color: #78716C; }
+    .v3-entry-role { font-size: 0.83rem; font-style: italic; color: #78716C; margin-bottom: 6px; }
+    .v3-entry-body { font-size: 0.88rem; line-height: 1.68; color: #292524; }
+    .v3-etags { display: flex; gap: 0; flex-wrap: wrap; margin-top: 7px; }
+    .v3-etag { font-family: 'Courier New', ui-monospace, monospace; font-size: 0.68rem; color: #A8A29E; }
+    .v3-etag + .v3-etag::before { content: " · "; color: #C8C5C0; }
+
+    .v3-footer {
+      margin-top: 40px; padding-top: 14px; border-top: 1px solid #D6D3D1;
+      display: flex; justify-content: space-between;
+      font-family: 'Courier New', ui-monospace, monospace; font-size: 0.68rem; color: #A8A29E;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     VARIANT 1 — BENTO GRID
+════════════════════════════════════════ -->
+<main data-v="1" aria-label="Bento grid portfolio variant">
+  <div class="v1-grid">
+
+    <!-- Row 1-2 -->
+    <div class="tile v1-name">
+      <h1>Brett<br>Reif</h1>
+      <div class="tile-role">Agentic AI Systems</div>
+    </div>
+    <div class="tile v1-bio">
+      <p>Product-minded engineer creating agent frameworks, content pipelines, and developer tools. Every system I build is designed to compound, not just complete a task.</p>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="tile v1-stat"><div class="n">12</div><div class="l">Projects</div></div>
+    <div class="tile v1-stat"><div class="n">20</div><div class="l">Skills</div></div>
+    <div class="tile v1-status"><div class="dot"></div><span>Shipping</span></div>
+    <div class="tile v1-stat"><div class="n">108</div><div class="l">Notes</div></div>
+    <div class="tile v1-stack">
+      <div class="tile-eyebrow">Stack</div>
+      <div class="chips">
+        <span class="chip">TypeScript</span>
+        <span class="chip">Python</span>
+        <span class="chip">React</span>
+        <span class="chip">Node</span>
+        <span class="chip">FastAPI</span>
+      </div>
+    </div>
+
+    <!-- Rows 4-5 -->
+    <div class="tile v1-proj tall">
+      <div>
+        <div class="proj-eye">Agent Framework</div>
+        <h3>Content Engine</h3>
+        <p style="margin-top:8px">Changelog-to-video pipeline. Multi-agent orchestration transforms release notes into scripts, analysis, and social posts.</p>
+      </div>
+      <div>
+        <div class="ptags"><span class="ptag">TS</span><span class="ptag">Remotion</span><span class="ptag">Node</span></div>
+        <span class="pbadge prod" style="margin-top:8px">Prod</span>
+      </div>
+    </div>
+
+    <div class="tile v1-proj wide">
+      <div>
+        <div class="proj-eye">Research Tool</div>
+        <h3>Multi-Agent Debate</h3>
+      </div>
+      <div>
+        <p>Multiple agents argue positions and synthesize conclusions. FastAPI + React.</p>
+        <div class="ptags" style="margin-top:8px"><span class="ptag">Python</span><span class="ptag">FastAPI</span><span class="ptag">React</span></div>
+      </div>
+    </div>
+
+    <div class="tile v1-proj sq" style="justify-content:space-between">
+      <div class="proj-eye">Infrastructure</div>
+      <h3>Model Router</h3>
+      <span class="pbadge active">Active</span>
+    </div>
+
+    <div class="tile v1-proj wide">
+      <div>
+        <div class="proj-eye">Developer Tools</div>
+        <h3>AI Skills Library</h3>
+      </div>
+      <div>
+        <p>20+ retrieval-optimized agent skills for VS Code Copilot.</p>
+        <div class="ptags" style="margin-top:8px"><span class="ptag">Markdown</span><span class="ptag">VS Code</span></div>
+      </div>
+    </div>
+
+    <div class="tile v1-cta">
+      <div class="cta-label">Get in touch</div>
+      <a href="#" class="cta-link">Say hello <span class="cta-arrow">&#8594;</span></a>
+    </div>
+
+  </div>
+</main>
+
+<!-- ════════════════════════════════════════
+     VARIANT 2 — BRUTALIST
+════════════════════════════════════════ -->
+<main data-v="2" aria-label="Brutalist portfolio variant">
+  <div class="v2-wrap">
+
+    <header class="v2-topbar">
+      <span class="v2-logo">Brett Reifers</span>
+      <nav class="v2-nav" aria-label="Primary">
+        <a href="#">Work</a>
+        <a href="#">Stack</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <section class="v2-hero">
+      <div class="v2-bg-word" aria-hidden="true">SHIP</div>
+      <div class="v2-headline">
+        <em>Agentic</em><br>AI<br>Systems
+      </div>
+      <div class="v2-role-tag">Brett Reifers, Product Engineer</div>
+      <p class="v2-bio">I build agent frameworks, content pipelines, and developer tools. Every system is designed to compound, not just complete a task.</p>
+    </section>
+
+    <div class="v2-stats">
+      <div class="v2-stat-cell"><div class="v2-stat-n">12</div><div class="v2-stat-l">Projects</div></div>
+      <div class="v2-stat-cell"><div class="v2-stat-n">20</div><div class="v2-stat-l">Agent Skills</div></div>
+      <div class="v2-stat-cell"><div class="v2-stat-n">108</div><div class="v2-stat-l">Shipped Notes</div></div>
+      <div class="v2-stat-cell"><div class="v2-stat-n">3</div><div class="v2-stat-l">Active Now</div></div>
+    </div>
+
+    <div class="v2-section-bar">
+      <h2>Selected Work</h2>
+      <span class="cnt">6 projects</span>
+    </div>
+
+    <div class="v2-projects">
+      <div class="v2-proj-cell">
+        <div class="v2-num">01</div>
+        <h3>Content Engine</h3>
+        <p>Changelog-to-video pipeline. Multi-agent orchestration turns release notes into scripts, analysis, and social posts.</p>
+        <div class="v2-tags"><span class="v2-tag hero-tag">Flagship</span><span class="v2-tag">TS</span><span class="v2-tag">Remotion</span></div>
+      </div>
+      <div class="v2-proj-cell">
+        <div class="v2-num">02</div>
+        <h3>Multi-Agent Debate</h3>
+        <p>Multiple LLM agents argue positions and synthesize verdicts. FastAPI backend, React front end.</p>
+        <div class="v2-tags"><span class="v2-tag">Python</span><span class="v2-tag">FastAPI</span><span class="v2-tag">React</span></div>
+      </div>
+      <div class="v2-proj-cell">
+        <div class="v2-num">03</div>
+        <h3>Model Router</h3>
+        <p>Multi-LLM routing layer. Dispatches prompts to the right model by cost, latency, and capability.</p>
+        <div class="v2-tags"><span class="v2-tag">Python</span><span class="v2-tag">Node</span></div>
+      </div>
+      <div class="v2-proj-cell">
+        <div class="v2-num">04</div>
+        <h3>AI Skills Library</h3>
+        <p>20+ agent skills for VS Code Copilot. Retrieval-optimized, shipped as part of the workshop toolkit.</p>
+        <div class="v2-tags"><span class="v2-tag">VS Code</span><span class="v2-tag">Markdown</span></div>
+      </div>
+      <div class="v2-proj-cell">
+        <div class="v2-num">05</div>
+        <h3>Portfolio Workshop</h3>
+        <p>1-hour workshop teaching attendees to ship a portfolio with generative AI. Doubles as a live slide deck.</p>
+        <div class="v2-tags"><span class="v2-tag">Slidev</span><span class="v2-tag">Vue</span></div>
+      </div>
+      <div class="v2-proj-cell">
+        <div class="v2-num">06</div>
+        <h3>MCP Media Server</h3>
+        <p>Model Context Protocol server combining media tools and custom pipelines in a single stdio process.</p>
+        <div class="v2-tags"><span class="v2-tag">TypeScript</span><span class="v2-tag">MCP</span></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ════════════════════════════════════════
+     VARIANT 3 — PRINTED DOCUMENT
+════════════════════════════════════════ -->
+<main data-v="3" aria-label="Printed document portfolio variant">
+  <div class="v3-page">
+
+    <div class="v3-nameplate">
+      <div>
+        <div class="v3-name">Brett Reifers</div>
+        <div class="v3-sub">Agentic AI Systems / Product Engineer</div>
+      </div>
+      <div class="v3-contact">
+        github.com/BrettReifs<br>
+        Status: Shipping<br>
+        Open to select work
+      </div>
+    </div>
+
+    <div class="v3-sec">
+      <div class="v3-sec-head">Summary</div>
+      <hr class="v3-rule">
+      <p class="v3-summary">Product-minded engineer specializing in agentic AI systems, content automation, and developer tooling. I build systems that compound over time, not just tools that complete a single task.</p>
+    </div>
+
+    <div class="v3-two">
+      <aside>
+        <div class="v3-aside-sec">
+          <div class="v3-aside-head">Core Stack</div>
+          <hr class="v3-aside-rule">
+          <div class="v3-item">TypeScript / Node.js</div>
+          <div class="v3-item">Python / FastAPI</div>
+          <div class="v3-item">React / Remix</div>
+          <div class="v3-item">LLM APIs</div>
+          <div class="v3-item">MCP Protocol</div>
+        </div>
+        <div class="v3-aside-sec">
+          <div class="v3-aside-head">Domains</div>
+          <hr class="v3-aside-rule">
+          <div class="v3-item">Agent Frameworks</div>
+          <div class="v3-item">Content Pipelines</div>
+          <div class="v3-item">Developer Tools</div>
+          <div class="v3-item">AI Workflow Design</div>
+        </div>
+        <div class="v3-aside-sec">
+          <div class="v3-aside-head">By the Numbers</div>
+          <hr class="v3-aside-rule">
+          <div class="v3-item">12 shipped projects</div>
+          <div class="v3-item">20 agent skills</div>
+          <div class="v3-item">108 reference notes</div>
+        </div>
+      </aside>
+
+      <div>
+        <div class="v3-sec">
+          <div class="v3-sec-head">Selected Work</div>
+          <hr class="v3-rule">
+
+          <div class="v3-entry">
+            <div class="v3-entry-top">
+              <span class="v3-entry-title">Content Engine</span>
+              <span class="v3-entry-date">2024 — present</span>
+            </div>
+            <div class="v3-entry-role">Flagship project · Production</div>
+            <p class="v3-entry-body">Changelog-to-video pipeline using multi-agent orchestration. Transforms release notes into analysis, scripts, and social posts via a coordinated agent graph.</p>
+            <div class="v3-etags">
+              <span class="v3-etag">TypeScript</span>
+              <span class="v3-etag">Remotion</span>
+              <span class="v3-etag">Node.js</span>
+            </div>
+          </div>
+
+          <div class="v3-entry">
+            <div class="v3-entry-top">
+              <span class="v3-entry-title">Multi-Agent Debate</span>
+              <span class="v3-entry-date">2024</span>
+            </div>
+            <div class="v3-entry-role">Research tool · Active</div>
+            <p class="v3-entry-body">Philosophical debate system with FastAPI backend and React frontend. Multiple agents argue positions and synthesize reasoned conclusions.</p>
+            <div class="v3-etags">
+              <span class="v3-etag">Python</span>
+              <span class="v3-etag">FastAPI</span>
+              <span class="v3-etag">React</span>
+            </div>
+          </div>
+
+          <div class="v3-entry">
+            <div class="v3-entry-top">
+              <span class="v3-entry-title">Model Router</span>
+              <span class="v3-entry-date">2024</span>
+            </div>
+            <div class="v3-entry-role">Infrastructure · Active</div>
+            <p class="v3-entry-body">Multi-LLM routing layer that dispatches prompts to the right model based on cost, latency, and capability requirements.</p>
+            <div class="v3-etags">
+              <span class="v3-etag">Python</span>
+              <span class="v3-etag">Node.js</span>
+            </div>
+          </div>
+
+          <div class="v3-entry">
+            <div class="v3-entry-top">
+              <span class="v3-entry-title">AI Portfolio Workshop</span>
+              <span class="v3-entry-date">2025 — present</span>
+            </div>
+            <div class="v3-entry-role">Teaching material · Shipped</div>
+            <p class="v3-entry-body">1-hour workshop teaching attendees to ship a personal portfolio with generative AI. The repository doubles as a live slide deck, take-home toolkit, and reference examples.</p>
+            <div class="v3-etags">
+              <span class="v3-etag">Slidev</span>
+              <span class="v3-etag">Vue</span>
+              <span class="v3-etag">GitHub Pages</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="v3-footer">
+      <span>Brett Reifers</span>
+      <span>Updated May 2026</span>
+      <span>Page 1 of 1</span>
+    </div>
+  </div>
+</main>
+
+<!-- ════════════════════════════════════════
+     PROTOTYPE SWITCHER
+════════════════════════════════════════ -->
+<nav class="variant-bar" aria-label="Switch prototype variant">
+  <span class="var-label">PROTOTYPE</span>
+  <a href="?variant=1" class="var-btn" data-v="1">Bento</a>
+  <a href="?variant=2" class="var-btn" data-v="2">Brutalist</a>
+  <a href="?variant=3" class="var-btn" data-v="3">Document</a>
+</nav>
+
+<script>
+  const v = new URLSearchParams(location.search).get('variant') || '1';
+  document.documentElement.dataset.variant = v;
+  document.querySelectorAll('.var-btn').forEach(btn => {
+    if (btn.dataset.v === v) btn.classList.add('active');
+  });
+</script>
+</body>
+</html>

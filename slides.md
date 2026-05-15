@@ -668,6 +668,44 @@ Each tab shows the key goal, action bullets, and a copy-paste prompt.
 ---
 
 <!-- ============================================================
+     SLIDE 7b — Prototype Variants (design direction exploration)
+     ============================================================ -->
+
+<div class="pv-wrapper">
+  <iframe
+    src="/examples/prototype-variants/index.html"
+    class="pv-frame"
+    title="Prototype Variants — 3 design directions"
+  ></iframe>
+</div>
+
+<style>
+.slidev-layout {
+  background: #0A0A0A !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: stretch !important;
+}
+.pv-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.pv-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+</style>
+
+<!--
+Click through all 3 variants using the switcher bar at the bottom.
+Ask the audience: which direction fits your brand?
+-->
+
+---
+
+<!-- ============================================================
      SLIDE 8 — Jibe Demo (placeholder)
      ============================================================ -->
 
