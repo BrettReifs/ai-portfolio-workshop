@@ -162,9 +162,9 @@ a real workflow from prompt to deployed site.
     <ul class="audience-list">
       <li><strong>New to AI tools?</strong> let's ship something simple</li>
       <li><strong>Already use AI?</strong> let's progress even further</li>
-      <li>You have 1 hour, a laptop (or mobile device), internet access</li>
+      <li>Have 1 hour, a device and internet access?</li>
     </ul>
-    <p class="audience-note">You will leave with a deployed site.</p>
+    <p class="audience-note">Good news! You will leave with a deployed sharable site.</p>
   </div>
   <div class="agenda-right">
     <div class="section-label">Today's agenda</div>
@@ -266,6 +266,8 @@ a real workflow from prompt to deployed site.
   <WorkingBackwards />
 </div>
 
+<div class="wb-citation">Framework enjoyed by Microsoft Digital Design Studio</div>
+
 <style>
 .slidev-layout {
   background: #FFFFFF !important;
@@ -282,6 +284,13 @@ a real workflow from prompt to deployed site.
   line-height: 1.6;
   max-width: 55ch;
 }
+.wb-citation {
+  font-size: 0.6rem;
+  color: #9CA3AF;
+  letter-spacing: 0.06em;
+  margin-top: 1rem;
+  text-align: center;
+}
 </style>
 
 <!--
@@ -289,6 +298,103 @@ We are going to work backwards from the deployed product.
 Most people jump straight to building. We start with: what are we proud to share?
 Define, Design, Develop in that order — then Deploy.
 -->
+
+---
+
+<!-- ============================================================
+     SLIDE 5b — Two prompt starters
+     ============================================================ -->
+
+<PromptStarters />
+
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+</style>
+
+---
+
+<!-- ============================================================
+     SLIDE 5c — Side-by-side examples
+     ============================================================ -->
+
+<div class="examples-label">Vibes vs. Jibes — the output</div>
+<div class="examples-grid">
+  <div class="examples-col">
+    <div class="examples-tag examples-tag--purple">Vibes</div>
+    <div class="examples-frame-wrap">
+      <iframe src="/examples/beginner/index.html" class="examples-frame" frameborder="0" loading="lazy"></iframe>
+    </div>
+  </div>
+  <div class="examples-col">
+    <div class="examples-tag examples-tag--gold">"Jibes"</div>
+    <div class="examples-frame-wrap">
+      <iframe src="/examples/advanced/index.html" class="examples-frame" frameborder="0" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<style>
+.slidev-layout {
+  background: #F3EFF9 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.25rem 1.5rem !important;
+  gap: 0.75rem !important;
+}
+.examples-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #4B2E83;
+  align-self: flex-start;
+}
+.examples-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+.examples-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-height: 0;
+}
+.examples-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2em 0.7em;
+  border-radius: 9999px;
+  align-self: flex-start;
+}
+.examples-tag--purple { background: #4B2E83; color: #fff; }
+.examples-tag--gold { background: #D4A853; color: #1a0a30; }
+.examples-frame-wrap {
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(75, 46, 131, 0.15);
+  min-height: 0;
+}
+.examples-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+</style>
 
 ---
 
@@ -384,17 +490,38 @@ Define, Design, Develop in that order — then Deploy.
 ---
 
 <!-- ============================================================
-     SLIDE 5b — Two prompt starters
+     SLIDE 5c — Demo site
      ============================================================ -->
 
-<PromptStarters />
+<div class="demo-wrapper">
+  <iframe
+    src="https://expert-profile-kit.lovable.app/"
+    class="demo-frame"
+    frameborder="0"
+    allow="fullscreen"
+  ></iframe>
+</div>
 
 <style>
 .slidev-layout {
-  background: #FFFFFF !important;
+  background: #F3EFF9 !important;
   display: flex !important;
-  flex-direction: column !important;
+  align-items: center !important;
   justify-content: center !important;
+  padding: 1.5rem !important;
+}
+.demo-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(75, 46, 131, 0.18);
+}
+.demo-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 </style>
 
@@ -412,11 +539,16 @@ Define, Design, Develop in that order — then Deploy.
   </p>
   <p class="challenge-body">
     What if you want your portfolio to actually <strong>reflect you</strong> — your aesthetic,
-    your voice, your standards?
+    your voice, your standards? A lot will change after first build.
   </p>
-  <p class="challenge-cta">
-    That is what the next section is for.
-  </p>
+  <ul class="challenge-list">
+    <li>Fails accessibility check</li>
+    <li>Project demands a rebrand</li>
+    <li>Product requirements shift mid-build</li>
+    <li>Auth and storage issues</li>
+    <li>Client wants "more energy"</li>
+    <li>Mobile layout breaks on real devices</li>
+  </ul>
 </div>
 
 <style>
@@ -457,6 +589,23 @@ Define, Design, Develop in that order — then Deploy.
   line-height: 1.6;
   margin: 0;
 }
+.challenge-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.challenge-list li {
+  font-size: 0.72rem;
+  color: #374151;
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  border-radius: 9999px;
+  padding: 0.3em 0.85em;
+  line-height: 1;
+}
 .challenge-cta {
   font-size: 1rem;
   font-weight: 700;
@@ -488,24 +637,24 @@ Define, Design, Develop in that order — then Deploy.
 .proto-slide {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.5rem;
   height: 100%;
   padding-top: 0.25rem;
 }
 .proto-header {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.15rem;
 }
 .proto-heading {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #4B2E83;
   margin: 0;
   letter-spacing: -0.02em;
 }
 .proto-sub {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #9CA3AF;
   margin: 0;
 }
@@ -592,100 +741,38 @@ Return to slides when done.
      SLIDE 8b — LiferMap demo (Professor Leo's deployed app)
      ============================================================ -->
 
-<div class="lifermap-slide">
-  <div class="lifermap-bar">
-    <span class="lifermap-label">Live example</span>
-    <span class="lifermap-url">lifermap.com</span>
-    <a href="https://lifermap.com" target="_blank" rel="noopener" class="lifermap-open">↗ open in tab</a>
-  </div>
-  <div class="lifermap-frame-wrap">
-    <iframe
-      src="https://lifermap.com"
-      class="lifermap-frame"
-      title="LiferMap — Professor Leonard Boussioux"
-      allow="fullscreen"
-      loading="lazy"
-    ></iframe>
-    <div class="lifermap-blocked">
-      <p>This site cannot be embedded.</p>
-      <a href="https://lifermap.com" target="_blank" rel="noopener" class="gold-cta" style="margin-top:1rem;">Open lifermap.com →</a>
-    </div>
-  </div>
+<div class="demo-wrapper">
+  <iframe
+    src="https://lifermap.com"
+    class="demo-frame"
+    title="LiferMap — Professor Leonard Boussioux"
+    allow="fullscreen"
+    loading="lazy"
+  ></iframe>
 </div>
 
 <style>
 .slidev-layout {
-  background: #0A0A0A !important;
-  color: #FFFFFF !important;
-  padding: 0 !important;
+  background: #F3EFF9 !important;
   display: flex !important;
-  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.5rem !important;
 }
-.lifermap-slide {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.demo-wrapper {
   width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(75, 46, 131, 0.18);
 }
-.lifermap-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.45rem 1rem;
-  background: #111;
-  border-bottom: 1px solid #262626;
-  flex-shrink: 0;
-}
-.lifermap-label {
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: #D4A853;
-  font-weight: 700;
-}
-.lifermap-url {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.6);
-  flex: 1;
-}
-.lifermap-open {
-  font-size: 0.68rem;
-  color: #7B5DB0;
-  text-decoration: none;
-  letter-spacing: 0.04em;
-}
-.lifermap-open:hover { color: #D4A853; }
-.lifermap-frame-wrap {
-  flex: 1;
-  position: relative;
-  min-height: 0;
-}
-.lifermap-frame {
+.demo-frame {
   width: 100%;
   height: 100%;
   border: none;
   display: block;
 }
-.lifermap-blocked {
-  display: none;
-  position: absolute;
-  inset: 0;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: #111;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.9rem;
-  text-align: center;
-}
 </style>
-
-<!--
-If lifermap.com blocks iframe embedding (X-Frame-Options), the fallback
-text and "Open lifermap.com →" link will show instead.
-In that case, use the browser directly or click the "↗ open in tab" link.
--->
 
 ---
 

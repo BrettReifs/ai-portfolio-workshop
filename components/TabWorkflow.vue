@@ -2,6 +2,14 @@
 import { ref } from 'vue'
 
 const activeTab = ref('DEFINE')
+const copied = ref(false)
+
+function copyPrompt() {
+  navigator.clipboard.writeText(panels[activeTab.value].prompt).then(() => {
+    copied.value = true
+    setTimeout(() => { copied.value = false }, 1800)
+  })
+}
 
 const tabs = [
   { key: 'DEFINE',  label: 'DEFINE' },
@@ -12,33 +20,61 @@ const tabs = [
 
 const panels = {
   DEFINE: {
-    headline: 'Start with 3 questions',
+    headline: 'Align before you build',
     items: [
-      { label: 'Who are you to this audience?', detail: 'Role and value prop in one line.' },
-      { label: 'What do you want them to do?', detail: 'Apply, contact, hire, or follow.' },
-      { label: 'What words capture your voice?', detail: '3–5 keywords — verbs, not adjectives.' },
+      { label: 'Identity', detail: 'Role + value prop in one line. Specific to this audience, not everyone.' },
+      { label: 'Audience + action', detail: '"Hiring managers at AI startups in NYC" beats "tech recruiters." One specific desired action.' },
+      { label: 'Projects', detail: 'Link to repos, docs, or case studies. One measurable outcome each — what shipped, what changed.' },
+      { label: 'Voice', detail: '3–5 verbs or nouns, not adjectives. Used to strip AI slop after generation.' },
+      { label: 'Definition of done', detail: 'Lighthouse ≥90, mobile tested, meta + OG in place, one shareable URL.' },
+      { label: 'Antipatterns', detail: 'Aesthetics you hate, phrases to ban. Negative examples cut iteration rounds.' },
     ],
-    prompt: `Help me draft 3 portfolio identity statements.
-Role: {ROLE}. Audience: {AUDIENCE}.
-3 things I have shipped: {PROJECTS}.
-Voice keywords: {VOICE_KEYWORDS}.
-No banned phrases: delve, showcase, robust, seamless, innovative.`,
-    promptLabel: 'Identity prompt (paste into preferred service)',
+    prompt: `Ask me questions to help me spec and clarify a site for my audience.
+
+Role: {ROLE}
+Audience: {AUDIENCE} — specific, not generic
+Action: {DESIRED_ACTION}
+Voice (3–5 verbs/nouns): {VOICE_KEYWORDS}
+
+Projects (repo/doc link + one outcome each):
+{PROJECTS}
+
+Aesthetic: {AESTHETIC}
+References: {REFERENCES}
+Antipatterns: {ANTIPATTERNS}
+
+Done when: Lighthouse ≥90, mobile tested, OG tags, one URL.
+No: delve, showcase, robust, seamless, innovative.`,
+    promptLabel: 'Identity prompt — paste into preferred service',
     cta: null,
   },
   DESIGN: {
-    headline: 'Lock in a design system — once',
+    headline: 'Lock in your tokens before you build',
     items: [
-      { label: 'Color', detail: 'bg / surface / accent — one palette, consistent throughout.' },
-      { label: 'Typography', detail: 'Display, body, and mono stacks. Pick and commit.' },
-      { label: 'Spacing', detail: 'One scale used everywhere — 0.25rem to 8rem.' },
-      { label: 'Save to DESIGN.md', detail: 'Reusable across every future project and AI session.' },
+      { label: 'One palette', detail: 'bg / surface / accent. Both light and dark must hit WCAG AA. Commit before prompting.' },
+      { label: 'Type stack', detail: 'Display, body, mono. System fonts by default. One modular scale, ratio ~1.25.' },
+      { label: 'Spacing scale', detail: '0.25 to 8rem — one set of values everywhere. Never eyeball gaps between elements.' },
+      { label: 'Aesthetic anchor', detail: 'One phrase: editorial-minimal, neo-brutalist, terminal-monospace. Mixing produces slop.' },
+      { label: 'Reference sites', detail: 'Paste 1-3 URLs. Say what to borrow specifically: spacing rhythm, color density, type weight.' },
+      { label: 'Save as DESIGN.md', detail: 'Token file reused across every AI session. Lint with npx @google/design.md — a Google-promoted standard.' },
     ],
-    prompt: `Research using {{urls}} reference {{pasted}}screenshots to:
-1. Extract the color palette from image 1
-2. Identify the spacing scale from image 2
-3. Synthesize a token set combining all three`,
-    promptLabel: 'Multimodal design trick (Gemini)',
+    prompt: `Extract a token set from my references and output a DESIGN.md file.
+
+Aesthetic: {AESTHETIC}
+References: {REFERENCES} (what to borrow from each)
+Color: {COLOR_PREFERENCE}
+Type: {TYPE_PREFERENCE} — default: system font stack
+Dark mode: {DARK_MODE}
+
+Output tokens:
+- Color: bg, surface, text, muted, accent, border
+- Type: display / body / mono stacks + scale ratio
+- Spacing: 0.25rem step to 8rem
+- Radius: 1-2 values (4px controls, 8px cards)
+- Shadows: sm and md only
+
+WCAG AA contrast required. Output as a DESIGN.md code block.`,
+    promptLabel: 'Multimodal token extraction — paste with screenshots',
     cta: null,
   },
   DEVELOP: {
@@ -107,10 +143,33 @@ npx vercel --yes`,
         </div>
         <div class="tw-panel-right">
           <p class="tw-prompt-label">{{ panels[activeTab].promptLabel }}</p>
-          <pre class="tw-prompt">{{ panels[activeTab].prompt }}</pre>
+          <div class="tw-prompt-wrap">
+            <button class="tw-copy-btn" @click="copyPrompt" :class="{ 'tw-copy-btn--done': copied }">
+              {{ copied ? 'Copied' : 'Copy' }}
+            </button>
+            <pre class="tw-prompt">{{ panels[activeTab].prompt }}</pre>
+          </div>
         </div>
       </div>
     </transition>
+    <div v-if="activeTab === 'DEFINE'" class="tw-define-ref">
+      Want the full structured prompt with every field?
+      <a
+        href="https://github.com/BrettReifs/ai-portfolio-workshop/blob/main/DEFINE.prompt.md"
+        target="_blank"
+        rel="noopener"
+        class="tw-define-ref-link"
+      >DEFINE.prompt.md on GitHub →</a>
+    </div>
+    <div v-if="activeTab === 'DESIGN'" class="tw-define-ref">
+      DESIGN.md is a token standard promoted by Google.
+      <a
+        href="https://github.com/BrettReifs/ai-portfolio-workshop/blob/main/design.md"
+        target="_blank"
+        rel="noopener"
+        class="tw-define-ref-link"
+      >design.md on GitHub →</a>
+    </div>
   </div>
 </template>
 
@@ -127,7 +186,7 @@ npx vercel --yes`,
   display: flex;
   gap: 0;
   border-bottom: 2px solid #E5E5E5;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .tw-tab {
@@ -164,10 +223,10 @@ npx vercel --yes`,
 }
 
 .tw-panel-headline {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #4B2E83;
-  margin: 0 0 0.875rem;
+  margin: 0 0 0.5rem;
   letter-spacing: -0.01em;
 }
 
@@ -178,14 +237,14 @@ npx vercel --yes`,
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.35rem;
 }
 
 .tw-item {
   display: flex;
   gap: 0.5rem;
-  font-size: 0.82rem;
-  line-height: 1.45;
+  font-size: 0.76rem;
+  line-height: 1.35;
   align-items: baseline;
 }
 
@@ -220,19 +279,72 @@ npx vercel --yes`,
   font-family: ui-monospace, "JetBrains Mono", monospace;
 }
 
+.tw-prompt-wrap {
+  position: relative;
+}
+
+.tw-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4B2E83;
+  background: #EDE8F5;
+  border: 1px solid #D4C8F0;
+  border-radius: 4px;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.6;
+}
+
+.tw-copy-btn:hover {
+  background: #4B2E83;
+  color: #fff;
+}
+
+.tw-copy-btn--done {
+  background: #4B2E83;
+  color: #fff;
+  border-color: #4B2E83;
+}
+
 .tw-prompt {
   background: #F3EFF9;
   border: 1px solid #D4C8F0;
   border-left: 3px solid #4B2E83;
   border-radius: 6px;
-  padding: 0.875rem 1rem;
+  padding: 0.625rem 0.875rem;
   font-family: ui-monospace, "JetBrains Mono", monospace;
-  font-size: 0.68rem;
-  line-height: 1.6;
+  font-size: 0.62rem;
+  line-height: 1.55;
   color: #2D1A52;
   margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.tw-define-ref {
+  font-size: 0.65rem;
+  color: #9CA3AF;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+.tw-define-ref-link {
+  color: #4B2E83;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+.tw-define-ref-link:hover {
+  text-decoration: underline;
 }
 
 /* Transition */
