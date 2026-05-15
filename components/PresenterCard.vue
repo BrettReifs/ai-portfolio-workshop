@@ -39,12 +39,12 @@ defineProps({
 }
 
 .presenter-img-wrap {
-  width: 160px;
-  height: 160px;
-  border-radius: 9999px;
+  width: 215px;
+  height: 215px;
+  border-radius: 16px;
   overflow: hidden;
   border: 3px solid var(--uw-gold-bright, #D4A853);
-  box-shadow: 0 0 0 6px var(--uw-purple-light, #EDE8F5);
+  box-shadow: 0 8px 28px rgba(75, 46, 131, 0.18);
   flex-shrink: 0;
 }
 

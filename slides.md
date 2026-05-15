@@ -98,19 +98,19 @@ You will leave today with a live portfolio URL.
   <div class="presenters-label">Your instructors today</div>
   <div class="presenters-grid">
     <PresenterCard
+      name="Leonard Boussioux"
+      title="Professor of GenAI, Foster School of Business, University of Washington"
+      image="/profile-leo-40.jpg"
+      imagePosition="50% 40%"
+      :imageScale="0.85"
+    />
+    <PresenterCard
       name="Brett Reifers"
       title="Senior Product Manager, Microsoft"
       subtitle="AI Portfolio Workshop"
       image="/profile-brett.jpg"
       imagePosition="50% -10%"
       :imageScale="2"
-    />
-    <PresenterCard
-      name="Leonard Boussioux"
-      title="Professor of GenAI, Foster School of Business, University of Washington"
-      image="/profile-leo-40.jpg"
-      imagePosition="50% 40%"
-      :imageScale="0.85"
     />
   </div>
 </div>
@@ -164,7 +164,7 @@ a real workflow from prompt to deployed site.
       <li><strong>Already use AI?</strong> let's progress even further</li>
       <li>Have 1 hour, a device and internet access?</li>
     </ul>
-    <p class="audience-note">Good news! You will leave with a deployed sharable site.</p>
+    <p class="audience-note">Good news! You will leave with a <span style="color:#D4A853">deployed sharable site</span>.</p>
   </div>
   <div class="agenda-right">
     <div class="section-label">Today's agenda</div>
@@ -192,7 +192,7 @@ a real workflow from prompt to deployed site.
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch;
   width: 100%;
   padding: 1rem 0;
 }
@@ -225,11 +225,17 @@ a real workflow from prompt to deployed site.
   color: #4B2E83;
   font-weight: 700;
 }
+.agenda-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .audience-note {
-  margin-top: 1.25rem;
-  font-size: 0.8rem;
-  color: #6B7280;
-  font-style: italic;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #4B2E83;
+  font-style: normal;
+  line-height: 1.3;
 }
 .agenda-table {
   width: 100%;
@@ -322,7 +328,7 @@ Define, Design, Develop in that order — then Deploy.
      SLIDE 5c — Side-by-side examples
      ============================================================ -->
 
-<div class="examples-label">Vibes vs. Jibes — the output</div>
+<div class="examples-label">Prototyping Vibes vs. Jibes — the output</div>
 <div class="examples-grid">
   <div class="examples-col">
     <div class="examples-tag examples-tag--purple">Vibes</div>
