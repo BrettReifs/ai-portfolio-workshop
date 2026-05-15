@@ -4,155 +4,263 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio Gallery — AI Portfolio Workshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: #0A0A0A;
-      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-      color: #F5F5F5;
-      min-height: 100vh;
-      padding: 48px 28px 80px;
-    }
-    .page { max-width: 1080px; margin: 0 auto; }
 
-    .header { text-align: center; margin-bottom: 56px; }
-    .eyebrow {
+    :root {
+      --bg:        #0A0A0A;
+      --surface:   #171717;
+      --border:    #262626;
+      --text:      #FAFAF9;
+      --muted:     #A3A3A3;
+      --purple:    #4B2E83;
+      --purple-lt: #7B5DB0;
+      --gold:      #D4A853;
+      --gold-dim:  rgba(212,168,83,0.35);
+      --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font-sans);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HERO HEADER ── matches closing slide gradient */
+    .hero {
+      background: linear-gradient(135deg, #2D1A52 0%, #4B2E83 50%, #1a0a30 100%);
+      padding: 64px 28px 56px;
+      text-align: center;
+      border-bottom: 1px solid rgba(212,168,83,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(212,168,83,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
-      text-transform: uppercase; color: #D4A853; margin-bottom: 12px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 14px; position: relative;
     }
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
       font-weight: 800; letter-spacing: -0.04em; line-height: 1.05;
-      color: #FFFFFF;
+      color: #FFFFFF; position: relative;
     }
-    .sub {
-      font-size: 0.95rem; color: rgba(255,255,255,0.45);
-      margin-top: 12px; line-height: 1.6;
+    .hero-sub {
+      font-size: 0.95rem; color: rgba(255,255,255,0.5);
+      margin-top: 14px; line-height: 1.65; position: relative;
     }
-    .sub a { color: #D4A853; text-decoration: none; }
-    .sub a:hover { text-decoration: underline; }
+    .hero-sub a {
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--gold-dim);
+    }
+    .hero-sub a:hover { border-bottom-color: var(--gold); }
+
+    .hero-actions {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-top: 28px; position: relative; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.8rem; font-weight: 600; text-decoration: none;
+      border-radius: 9999px; padding: 9px 22px; transition: all 0.15s;
+    }
+    .btn-gold {
+      background: var(--gold); color: #1A0A30;
+    }
+    .btn-gold:hover { background: #e0b85f; }
+    .btn-ghost {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.13); }
+
+    /* ── GRID ── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 52px 28px 80px; }
+
+    .section-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 20px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
       gap: 16px;
     }
 
+    /* ── CARD ── */
     .card {
-      background: #161616;
-      border: 1px solid #2A2A2A;
-      border-radius: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       overflow: hidden;
-      transition: border-color 0.15s, transform 0.15s;
       display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
     }
-    .card:hover { border-color: #D4A853; transform: translateY(-2px); }
+    .card:hover {
+      border-color: var(--gold-dim);
+      box-shadow: 0 8px 32px rgba(75,46,131,0.25);
+      transform: translateY(-2px);
+    }
+    .card:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
 
     .card-preview {
       width: 100%; aspect-ratio: 16/9;
-      background: #111;
-      position: relative; overflow: hidden;
+      background: #111; position: relative; overflow: hidden;
     }
     .card-preview iframe {
       width: 200%; height: 200%;
       transform: scale(0.5); transform-origin: top left;
       border: none; pointer-events: none;
     }
-    .card-preview .preview-overlay {
+    .card-preview .overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(22,22,22,0.5));
+      background: linear-gradient(to bottom, transparent 55%, var(--surface) 100%);
     }
 
-    .card-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
-    .card-name { font-size: 0.95rem; font-weight: 700; color: #FFFFFF; }
-    .card-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.5; flex: 1; }
-    .card-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.72rem; font-family: ui-monospace, monospace;
-      color: #D4A853; text-decoration: none; margin-top: 4px;
+    .card-body {
+      padding: 16px 20px 20px;
+      flex: 1; display: flex; flex-direction: column; gap: 5px;
+    }
+    .card-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .card-note { font-size: 0.78rem; color: var(--muted); line-height: 1.5; flex: 1; }
+    .card-url {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.7rem; font-family: var(--font-mono);
+      color: var(--gold); margin-top: 6px;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .card-link:hover { text-decoration: underline; }
 
-    .add-yours {
-      border: 1px dashed #2A2A2A;
-      border-radius: 14px;
+    /* ── ADD YOURS PLACEHOLDER ── */
+    .card-placeholder {
+      background: transparent;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       padding: 40px 24px; text-align: center;
-      gap: 10px; min-height: 200px;
+      gap: 12px; min-height: 220px;
     }
-    .add-yours-label {
-      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(255,255,255,0.25);
+    .card-placeholder-label {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.2);
     }
-    .add-yours a {
-      font-size: 0.82rem; color: #D4A853; text-decoration: none;
-      border: 1px solid rgba(212,168,83,0.3); border-radius: 9999px;
-      padding: 6px 18px;
+    .card-placeholder a {
+      font-size: 0.8rem; color: var(--gold); text-decoration: none;
+      border: 1px solid var(--gold-dim); border-radius: 9999px; padding: 7px 20px;
+      transition: background 0.15s;
     }
-    .add-yours a:hover { background: rgba(212,168,83,0.08); }
+    .card-placeholder a:hover { background: rgba(212,168,83,0.08); }
 
+    /* ── FOOTER ── */
     .footer {
-      margin-top: 64px; text-align: center;
-      font-size: 0.72rem; color: rgba(255,255,255,0.2);
+      margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 0.7rem; color: rgba(255,255,255,0.25);
+      font-family: var(--font-mono);
     }
-    .footer a { color: rgba(212,168,83,0.5); text-decoration: none; }
+    .footer a { color: rgba(212,168,83,0.4); text-decoration: none; }
+    .footer a:hover { color: var(--gold); }
+
+    /* external link icon */
+    .icon-ext { flex-shrink: 0; }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <header class="header">
-    <div class="eyebrow">AI Portfolio Workshop</div>
+  <header class="hero">
+    <div class="hero-eyebrow">AI Portfolio Workshop — Cohort Gallery</div>
     <h1>Shipped by the cohort.</h1>
-    <p class="sub">
+    <p class="hero-sub">
       Portfolios built and deployed during the workshop.
       Share yours in the
       <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3" target="_blank" rel="noopener">
         GitHub discussion
       </a>.
     </p>
-  </header>
-
-  <div class="grid" id="gallery">
-
-    <!-- ── SEED ENTRY (presenter's example) ── -->
-    <a class="card" href="https://expert-profile-kit.lovable.app" target="_blank" rel="noopener" aria-label="Brett Reifers portfolio">
-      <div class="card-preview">
-        <iframe src="https://expert-profile-kit.lovable.app" title="Brett Reifers portfolio preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-        <div class="preview-overlay"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Brett Reifers</div>
-        <div class="card-note">The workshop presenter's example — Senior PM, Microsoft.</div>
-        <span class="card-link">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          expert-profile-kit.lovable.app
-        </span>
-      </div>
-    </a>
-
-    <!-- ── ADD MORE ENTRIES BELOW THIS LINE ──
-         Copy the block above and update: href, iframe src, card-name, card-note, card-link text
-    ── -->
-
-    <!-- ── "Add yours" placeholder ── -->
-    <div class="add-yours">
-      <div class="add-yours-label">Your portfolio here</div>
-      <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3" target="_blank" rel="noopener">
-        Share your link
+    <div class="hero-actions">
+      <a class="btn btn-gold"
+         href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3"
+         target="_blank" rel="noopener">
+        Share your portfolio
+      </a>
+      <a class="btn btn-ghost"
+         href="https://github.com/BrettReifs/ai-portfolio-workshop"
+         target="_blank" rel="noopener">
+        Get the workshop
       </a>
     </div>
+  </header>
 
-  </div>
+  <main class="page">
+    <div class="section-label">Deployed portfolios</div>
 
-  <footer class="footer">
-    <a href="https://github.com/BrettReifs/ai-portfolio-workshop" target="_blank" rel="noopener">
-      github.com/BrettReifs/ai-portfolio-workshop
-    </a>
-  </footer>
+    <div class="grid">
 
-</div>
+      <!-- ── SEED ENTRY (presenter example) ── -->
+      <a class="card"
+         href="https://expert-profile-kit.lovable.app"
+         target="_blank" rel="noopener"
+         aria-label="Brett Reifers — open portfolio in new tab">
+        <div class="card-preview">
+          <iframe src="https://expert-profile-kit.lovable.app"
+                  title="Brett Reifers portfolio preview"
+                  loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="overlay"></div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Brett Reifers</div>
+          <div class="card-note">Workshop presenter example — Senior PM, Microsoft.</div>
+          <span class="card-url">
+            <svg class="icon-ext" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            expert-profile-kit.lovable.app
+          </span>
+        </div>
+      </a>
+
+      <!-- ── ADD MORE ENTRIES BELOW THIS LINE ──
+           Copy the <a class="card"> block above.
+           Update: href, iframe src, card-name, card-note, card-url text.
+      ── -->
+
+      <!-- "Add yours" placeholder -->
+      <div class="card-placeholder">
+        <div class="card-placeholder-label">Your portfolio here</div>
+        <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3"
+           target="_blank" rel="noopener">
+          Share your link
+        </a>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <span>University of Washington · Foster School of Business</span>
+      <a href="https://github.com/BrettReifs/ai-portfolio-workshop" target="_blank" rel="noopener">
+        github.com/BrettReifs/ai-portfolio-workshop
+      </a>
+    </footer>
+  </main>
+
 </body>
 </html>
