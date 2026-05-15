@@ -852,6 +852,11 @@ Return to slides when done.
   </div>
 </div>
 
+<div class="share-link">
+  <span class="share-label">Share your work</span>
+  <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3" target="_blank" rel="noopener" class="share-url">discussions/3 — Show and tell</a>
+</div>
+
 <style>
 .slidev-layout {
   background: #FFFFFF !important;
@@ -903,6 +908,22 @@ Return to slides when done.
   padding: 0.1em 0.3em;
   border-radius: 3px;
 }
+.share-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+.share-label {
+  font-weight: 600;
+  color: #4B2E83;
+}
+.share-url {
+  color: #4B2E83;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(75, 46, 131, 0.4);
+}
 </style>
 
 ---
@@ -925,11 +946,6 @@ Return to slides when done.
     >
       github.com/BrettReifs/ai-portfolio-workshop
     </a>
-    <div class="close-divider"></div>
-    <div class="close-examples">
-      <span class="close-ex-label">Share your work</span>
-      <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3" target="_blank" rel="noopener" class="close-ex-link">discussions/3 — Show and tell</a>
-    </div>
     <div class="close-divider"></div>
     <div class="close-examples">
       <span class="close-ex-label">Cohort gallery</span>
