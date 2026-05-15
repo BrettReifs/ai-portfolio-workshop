@@ -258,6 +258,113 @@ a real workflow from prompt to deployed site.
 ---
 
 <!-- ============================================================
+     SLIDE 3b — Lovable Setup
+     ============================================================ -->
+
+# Get set up on Lovable
+
+<div class="setup-steps">
+  <div class="setup-step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <div class="step-title">Create a free account</div>
+      <div class="step-detail">Go to <a href="https://lovable.dev" target="_blank" rel="noopener" class="step-link">lovable.dev</a> and sign up.</div>
+    </div>
+  </div>
+  <div class="setup-step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <div class="step-title">Upgrade to Lovable Pro</div>
+      <div class="step-detail">Select the Pro plan from your account dashboard.</div>
+    </div>
+  </div>
+  <div class="setup-step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <div class="step-title">Enter your promo code at checkout</div>
+      <div class="step-detail">Add your payment info, then apply the code below. Your total will drop to <strong>$0</strong>.</div>
+      <div class="promo-code">COMM-AISPARK-V4F4</div>
+    </div>
+  </div>
+  <div class="setup-step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <div class="step-title">Cancel before your trial ends</div>
+      <div class="step-detail">After completing the purchase, go to Settings and cancel your subscription so you are not charged next month.</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.slidev-layout {
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+}
+.slidev-layout h1 {
+  color: #4B2E83;
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.setup-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+.setup-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.step-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #4B2E83;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-body {
+  padding-top: 0.2rem;
+}
+.step-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #111827;
+  margin-bottom: 0.2rem;
+}
+.step-detail {
+  font-size: 0.8rem;
+  color: #6B7280;
+  line-height: 1.5;
+}
+.step-link {
+  color: #4B2E83;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(75, 46, 131, 0.4);
+}
+.promo-code {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  background: #EDE8F5;
+  color: #4B2E83;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  border: 1px solid rgba(75, 46, 131, 0.25);
+}
+</style>
+
+---
+
+<!-- ============================================================
      SLIDE 4 — Working Backwards
      ============================================================ -->
 
