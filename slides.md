@@ -914,7 +914,7 @@ Return to slides when done.
 <div class="close-slide">
   <div class="close-label">University of Washington · Foster School of Business</div>
   <h1 class="close-heading">Questions?</h1>
-  <p class="close-sub">Share your deployed URL in the repo Discussion thread.</p>
+  <p class="close-sub">Deploy your portfolio. Drop the link in the discussion. Get into the gallery.</p>
 
   <div class="close-links">
     <a
@@ -927,8 +927,13 @@ Return to slides when done.
     </a>
     <div class="close-divider"></div>
     <div class="close-examples">
-      <span class="close-ex-label">Deployed examples</span>
-      <a href="https://expert-profile-kit.lovable.app" target="_blank" rel="noopener" class="close-ex-link">expert-profile-kit.lovable.app</a>
+      <span class="close-ex-label">Share your work</span>
+      <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3" target="_blank" rel="noopener" class="close-ex-link">discussions/3 — Show and tell</a>
+    </div>
+    <div class="close-divider"></div>
+    <div class="close-examples">
+      <span class="close-ex-label">Cohort gallery</span>
+      <a href="/gallery.html" target="_blank" rel="noopener" class="close-ex-link close-ex-link--gold">ai-portfolio-workshop.vercel.app/gallery.html</a>
     </div>
   </div>
 </div>
@@ -1007,6 +1012,7 @@ Return to slides when done.
   text-decoration: none;
 }
 .close-ex-link:hover { color: #D4A853; }
+.close-ex-link--gold { color: #D4A853; }
 </style>
 
 <!--

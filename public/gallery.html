@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Gallery — AI Portfolio Workshop</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0A0A0A;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: #F5F5F5;
+      min-height: 100vh;
+      padding: 48px 28px 80px;
+    }
+    .page { max-width: 1080px; margin: 0 auto; }
+
+    .header { text-align: center; margin-bottom: 56px; }
+    .eyebrow {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: #D4A853; margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1.05;
+      color: #FFFFFF;
+    }
+    .sub {
+      font-size: 0.95rem; color: rgba(255,255,255,0.45);
+      margin-top: 12px; line-height: 1.6;
+    }
+    .sub a { color: #D4A853; text-decoration: none; }
+    .sub a:hover { text-decoration: underline; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #161616;
+      border: 1px solid #2A2A2A;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.15s, transform 0.15s;
+      display: flex; flex-direction: column;
+    }
+    .card:hover { border-color: #D4A853; transform: translateY(-2px); }
+
+    .card-preview {
+      width: 100%; aspect-ratio: 16/9;
+      background: #111;
+      position: relative; overflow: hidden;
+    }
+    .card-preview iframe {
+      width: 200%; height: 200%;
+      transform: scale(0.5); transform-origin: top left;
+      border: none; pointer-events: none;
+    }
+    .card-preview .preview-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(22,22,22,0.5));
+    }
+
+    .card-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .card-name { font-size: 0.95rem; font-weight: 700; color: #FFFFFF; }
+    .card-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.5; flex: 1; }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-family: ui-monospace, monospace;
+      color: #D4A853; text-decoration: none; margin-top: 4px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    .add-yours {
+      border: 1px dashed #2A2A2A;
+      border-radius: 14px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 40px 24px; text-align: center;
+      gap: 10px; min-height: 200px;
+    }
+    .add-yours-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.25);
+    }
+    .add-yours a {
+      font-size: 0.82rem; color: #D4A853; text-decoration: none;
+      border: 1px solid rgba(212,168,83,0.3); border-radius: 9999px;
+      padding: 6px 18px;
+    }
+    .add-yours a:hover { background: rgba(212,168,83,0.08); }
+
+    .footer {
+      margin-top: 64px; text-align: center;
+      font-size: 0.72rem; color: rgba(255,255,255,0.2);
+    }
+    .footer a { color: rgba(212,168,83,0.5); text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="eyebrow">AI Portfolio Workshop</div>
+    <h1>Shipped by the cohort.</h1>
+    <p class="sub">
+      Portfolios built and deployed during the workshop.
+      Share yours in the
+      <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3" target="_blank" rel="noopener">
+        GitHub discussion
+      </a>.
+    </p>
+  </header>
+
+  <div class="grid" id="gallery">
+
+    <!-- ── SEED ENTRY (presenter's example) ── -->
+    <a class="card" href="https://expert-profile-kit.lovable.app" target="_blank" rel="noopener" aria-label="Brett Reifers portfolio">
+      <div class="card-preview">
+        <iframe src="https://expert-profile-kit.lovable.app" title="Brett Reifers portfolio preview" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Brett Reifers</div>
+        <div class="card-note">The workshop presenter's example — Senior PM, Microsoft.</div>
+        <span class="card-link">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          expert-profile-kit.lovable.app
+        </span>
+      </div>
+    </a>
+
+    <!-- ── ADD MORE ENTRIES BELOW THIS LINE ──
+         Copy the block above and update: href, iframe src, card-name, card-note, card-link text
+    ── -->
+
+    <!-- ── "Add yours" placeholder ── -->
+    <div class="add-yours">
+      <div class="add-yours-label">Your portfolio here</div>
+      <a href="https://github.com/BrettReifs/ai-portfolio-workshop/discussions/3" target="_blank" rel="noopener">
+        Share your link
+      </a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <a href="https://github.com/BrettReifs/ai-portfolio-workshop" target="_blank" rel="noopener">
+      github.com/BrettReifs/ai-portfolio-workshop
+    </a>
+  </footer>
+
+</div>
+</body>
+</html>
