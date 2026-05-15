@@ -11,15 +11,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0A0A0A;
-      --surface:   #171717;
-      --border:    #262626;
-      --text:      #FAFAF9;
-      --muted:     #A3A3A3;
+      --bg:        #FAFAF9;
+      --surface:   #FFFFFF;
+      --border:    #E5E5E5;
+      --text:      #0A0A0A;
+      --muted:     #737373;
       --purple:    #4B2E83;
       --purple-lt: #7B5DB0;
-      --gold:      #D4A853;
-      --gold-dim:  rgba(212,168,83,0.35);
+      --gold:      #B8902A;
+      --gold-dim:  rgba(184,144,42,0.25);
       --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
     }
@@ -76,7 +76,7 @@
       border-radius: 9999px; padding: 9px 22px; transition: all 0.15s;
     }
     .btn-gold {
-      background: var(--gold); color: #1A0A30;
+      background: var(--gold); color: #FFFFFF;
     }
     .btn-gold:hover { background: #e0b85f; }
     .btn-ghost {
@@ -111,10 +111,11 @@
       display: flex; flex-direction: column;
       text-decoration: none; color: inherit;
       transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .card:hover {
-      border-color: var(--gold-dim);
-      box-shadow: 0 8px 32px rgba(75,46,131,0.25);
+      border-color: rgba(75,46,131,0.3);
+      box-shadow: 0 8px 28px rgba(75,46,131,0.12);
       transform: translateY(-2px);
     }
     .card:focus-visible {
@@ -124,7 +125,7 @@
 
     .card-preview {
       width: 100%; aspect-ratio: 16/9;
-      background: #111; position: relative; overflow: hidden;
+      background: #F0EDF7; position: relative; overflow: hidden;
     }
     .card-preview iframe {
       width: 200%; height: 200%;
@@ -133,7 +134,7 @@
     }
     .card-preview .overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 55%, var(--surface) 100%);
+      background: linear-gradient(to bottom, transparent 55%, rgba(255,255,255,0.85) 100%);
     }
 
     .card-body {
